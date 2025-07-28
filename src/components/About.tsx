@@ -76,22 +76,7 @@ const About = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
           {/* Left Content */}
           <div className={`space-y-8 ${isVisible ? 'animate-fade-in-left' : 'opacity-0'}`}>
-            <div>
-              <h3 className="text-2xl font-bold text-foreground mb-4 flex items-center">
-                <Sparkles className="h-6 w-6 text-primary mr-2" />
-                Unsere Geschichte
-              </h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                Was als kleine Familienbäckerei begann, ist heute eine beliebte Anlaufstelle für Tortenliebhaber 
-                und Freunde der türkischen Küche. Wir kombinieren traditionelle deutsche Backkunst mit den 
-                authentischen Aromen der türkischen Konditorei.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                Jede Torte erzählt eine Geschichte - von klassischen deutschen Sahnetorten bis hin zu 
-                exotischen türkischen Süßspeisen wie Baklava und Künefe. Unsere Meisterbäcker verwenden 
-                nur die besten Zutaten und bewährte Familienrezepte.
-              </p>
-            </div>
+
 
             <div>
               <h4 className="text-xl font-semibold text-foreground mb-4">
