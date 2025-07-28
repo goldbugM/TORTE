@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import SpotlightCard from "@/components/ui/SpotlightCard";
+import CakeFilling from "@/components/CakeFilling";
 import { useState, useEffect } from "react";
-import { Eye, Heart, ShoppingCart, Star } from "lucide-react";
+import { Eye, Heart, ShoppingCart, Star, ChefHat } from "lucide-react";
 import chocolateTorte from "@/assets/chocolate-torte.jpg";
 import fruitCake from "@/assets/fruit-cake.jpg";
 import weddingCake from "@/assets/wedding-cake.jpg";
@@ -74,6 +75,96 @@ const Gallery = () => {
       allergens: ["Gluten", "Milch", "Eier"]
     },
     {
+      image: "/placeholder-cake.svg",
+      title: "Buttercreme Torte",
+      description: "Klassische Torte mit luftiger Buttercreme und zartem Biskuitboden",
+      price: "ab 32€",
+      rating: 4.8,
+      popular: true,
+      ingredients: ["Butter", "Puderzucker", "Biskuit", "Vanille"],
+      allergens: ["Gluten", "Milch", "Eier"]
+    },
+    {
+      image: "/placeholder-cake.svg",
+      title: "Naked Torte",
+      description: "Moderne Torte ohne Fondant mit sichtbaren Schichten und frischen Früchten",
+      price: "ab 38€",
+      rating: 4.9,
+      popular: true,
+      ingredients: ["Frische Früchte", "Sahne", "Biskuit", "Beeren"],
+      allergens: ["Gluten", "Milch", "Eier"]
+    },
+    {
+      image: "/placeholder-cake.svg",
+      title: "Mascarpone-Frischkäse-Sahne Torte",
+      description: "Cremige Torte mit Mascarpone, Frischkäse und luftiger Sahne",
+      price: "ab 36€",
+      rating: 4.8,
+      popular: false,
+      ingredients: ["Mascarpone", "Frischkäse", "Sahne", "Biskuit"],
+      allergens: ["Gluten", "Milch", "Eier"]
+    },
+    {
+      image: "/placeholder-cake.svg",
+      title: "Vintage Torte",
+      description: "Elegante Torte im Vintage-Stil mit klassischen Dekorationen",
+      price: "ab 45€",
+      rating: 4.9,
+      popular: false,
+      ingredients: ["Buttercreme", "Fondant", "Biskuit", "Dekoration"],
+      allergens: ["Gluten", "Milch", "Eier"]
+    },
+    {
+      image: "/placeholder-cake.svg",
+      title: "Schoko Torte",
+      description: "Intensive Schokoladentorte für echte Schokoladenliebhaber",
+      price: "ab 34€",
+      rating: 4.8,
+      popular: true,
+      ingredients: ["Schokolade", "Kakao", "Sahne", "Biskuit"],
+      allergens: ["Gluten", "Milch", "Eier", "Soja"]
+    },
+    {
+      image: "/placeholder-cake.svg",
+      title: "Zitronen Tiramisu",
+      description: "Erfrischende Variation des klassischen Tiramisu mit Zitrone",
+      price: "ab 30€",
+      rating: 4.7,
+      popular: false,
+      ingredients: ["Mascarpone", "Löffelbiskuit", "Zitrone", "Kaffee"],
+      allergens: ["Gluten", "Milch", "Eier"]
+    },
+    {
+      image: "/placeholder-cake.svg",
+      title: "Wassermelonen Torte",
+      description: "Gesunde Torte komplett aus frischen Früchten ohne Backen",
+      price: "ab 28€",
+      rating: 4.6,
+      popular: false,
+      ingredients: ["Wassermelone", "Beeren", "Kokosnuss", "Nüsse"],
+      allergens: ["Nüsse"]
+    },
+    {
+      image: "/placeholder-cake.svg",
+      title: "Cake Pops und Muffins",
+      description: "Kleine süße Leckereien perfekt für Partys und Events",
+      price: "ab 2€/Stück",
+      rating: 4.7,
+      popular: true,
+      ingredients: ["Biskuit", "Schokolade", "Dekoration", "Sahne"],
+      allergens: ["Gluten", "Milch", "Eier"]
+    },
+    {
+      image: "/placeholder-cake.svg",
+      title: "San Sebastian Cheesecake",
+      description: "Baskischer Käsekuchen mit karamellisierter Oberfläche",
+      price: "ab 32€",
+      rating: 4.9,
+      popular: true,
+      ingredients: ["Frischkäse", "Sahne", "Eier", "Zucker"],
+      allergens: ["Milch", "Eier"]
+    },
+    {
       image: fruitCake,
       title: "Fruchtige Sahnetorte",
       description: "Frische Beeren auf luftiger Sahne mit Biskuitboden",
@@ -137,6 +228,66 @@ const Gallery = () => {
       allergens: ["Gluten", "Nüsse"]
     },
     {
+      image: "/placeholder-sweet.svg",
+      title: "Lofas Cheeckie",
+      description: "Süße türkische Spezialität mit cremiger Füllung",
+      price: "ab 20€/kg",
+      rating: 4.7,
+      popular: false,
+      ingredients: ["Milch", "Zucker", "Stärke", "Vanille"],
+      allergens: ["Milch", "Gluten"]
+    },
+    {
+      image: "/placeholder-sweet.svg",
+      title: "Kalte Baklava",
+      description: "Erfrischende Baklava-Variation mit Milchsirup und Pistazien/Walnuss",
+      price: "ab 28€/kg",
+      rating: 4.8,
+      popular: true,
+      ingredients: ["Pistazien", "Walnüsse", "Milchsirup", "Blätterteig"],
+      allergens: ["Gluten", "Nüsse", "Milch"]
+    },
+    {
+      image: "/placeholder-sweet.svg",
+      title: "Sütlü Nuriye & Baklava",
+      description: "Baklava mit Mascarpone/Pistazienfüllung und Milchsirup",
+      price: "ab 30€/kg",
+      rating: 4.9,
+      popular: true,
+      ingredients: ["Mascarpone", "Pistazien", "Milchsirup", "Blätterteig"],
+      allergens: ["Gluten", "Nüsse", "Milch"]
+    },
+    {
+      image: "/placeholder-sweet.svg",
+      title: "Kalburabasti mit Kokosnuss",
+      description: "Traditionelles türkisches Dessert mit Kokosnuss und Sirup",
+      price: "ab 22€/kg",
+      rating: 4.6,
+      popular: false,
+      ingredients: ["Kokosnuss", "Grieß", "Sirup", "Mandeln"],
+      allergens: ["Nüsse", "Gluten"]
+    },
+    {
+      image: "/placeholder-sweet.svg",
+      title: "Şekerpare",
+      description: "Süße Grießküchlein getränkt in Zuckersirup",
+      price: "ab 18€/kg",
+      rating: 4.7,
+      popular: false,
+      ingredients: ["Grieß", "Zucker", "Mandeln", "Sirup"],
+      allergens: ["Gluten", "Nüsse", "Eier"]
+    },
+    {
+      image: "/placeholder-sweet.svg",
+      title: "Revani",
+      description: "Saftiger Grießkuchen mit Zitronensirup",
+      price: "ab 18€/Portion",
+      rating: 4.8,
+      popular: true,
+      ingredients: ["Grieß", "Joghurt", "Zitronensirup", "Kokosraspel"],
+      allergens: ["Gluten", "Milch", "Eier"]
+    },
+    {
       image: kunefe,
       title: "Künefe",
       description: "Warmes Dessert mit geschmolzenem Käse und Kadayıf-Teig",
@@ -192,12 +343,82 @@ const Gallery = () => {
     {
       image: borek,
       title: "Börek",
-      description: "Knuspriges Blätterteiggebäck mit Spinat und Käse",
+      description: "Knuspriges Blätterteiggebäck mit verschiedenen Füllungen (Käse, Kartoffel, Hackfleisch, Spinat)",
       price: "ab 20€",
       rating: 4.8,
       popular: true,
-      ingredients: ["Blätterteig", "Spinat", "Käse", "Zwiebeln"],
+      ingredients: ["Blätterteig", "Käse/Kartoffel/Hackfleisch/Spinat", "Zwiebeln"],
       allergens: ["Gluten", "Milch"]
+    },
+    {
+      image: "/placeholder-savory.svg",
+      title: "Karotten Tarator",
+      description: "Erfrischender Salat mit Karotten, Joghurt und Knoblauch",
+      price: "ab 12€/Portion",
+      rating: 4.6,
+      popular: false,
+      ingredients: ["Karotten", "Joghurt", "Knoblauch", "Olivenöl"],
+      allergens: ["Milch"]
+    },
+    {
+      image: "/placeholder-savory.svg",
+      title: "Gefüllte Zwiebeln (Soğan Dolması)",
+      description: "Traditionell gefüllte Zwiebeln mit Reis und Gewürzen",
+      price: "ab 15€/Portion",
+      rating: 4.7,
+      popular: false,
+      ingredients: ["Zwiebeln", "Reis", "Hackfleisch", "Gewürze"],
+      allergens: []
+    },
+    {
+      image: "/placeholder-savory.svg",
+      title: "Çiğ Köfte",
+      description: "Würzige vegetarische Bulgur-Bällchen mit Kräutern",
+      price: "ab 18€/Portion",
+      rating: 4.8,
+      popular: true,
+      ingredients: ["Bulgur", "Tomatenmark", "Gewürze", "Kräuter"],
+      allergens: ["Gluten"]
+    },
+    {
+      image: "/placeholder-savory.svg",
+      title: "Kısır (Couscous Salat)",
+      description: "Türkischer Bulgursalat mit frischen Kräutern und Gemüse",
+      price: "ab 14€/Portion",
+      rating: 4.7,
+      popular: true,
+      ingredients: ["Bulgur", "Petersilie", "Tomaten", "Zwiebeln"],
+      allergens: ["Gluten"]
+    },
+    {
+      image: "/placeholder-savory.svg",
+      title: "Nudelsalat",
+      description: "Cremiger Nudelsalat nach türkischer Art",
+      price: "ab 12€/Portion",
+      rating: 4.5,
+      popular: false,
+      ingredients: ["Nudeln", "Mayonnaise", "Gemüse", "Gewürze"],
+      allergens: ["Gluten", "Eier"]
+    },
+    {
+      image: "/placeholder-savory.svg",
+      title: "Weinblätter (Sarma)",
+      description: "Mit Reis gefüllte Weinblätter in Olivenöl",
+      price: "ab 16€/Portion",
+      rating: 4.8,
+      popular: true,
+      ingredients: ["Weinblätter", "Reis", "Zwiebeln", "Olivenöl"],
+      allergens: []
+    },
+    {
+      image: "/placeholder-savory.svg",
+      title: "Beilagen jeder Art",
+      description: "Verschiedene türkische Beilagen und Salate nach Wunsch",
+      price: "ab 8€/Portion",
+      rating: 4.6,
+      popular: false,
+      ingredients: ["Variiert je nach Beilage"],
+      allergens: ["Variiert"]
     },
     {
       image: pide,
@@ -445,6 +666,13 @@ const Gallery = () => {
                 <p className="text-muted-foreground">
                   Klassische deutsche Backkunst mit modernen Kreationen
                 </p>
+              </div>
+              <div className="mb-8 p-6 bg-gradient-to-r from-pink-50 to-purple-50 rounded-lg border border-pink-200">
+                <div className="flex items-center gap-2 mb-4">
+                  <ChefHat className="h-6 w-6 text-pink-600" />
+                  <h3 className="text-xl font-semibold text-gray-800">Tortenfüllungen</h3>
+                </div>
+                <CakeFilling />
               </div>
               <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`}>
                 {renderCategoryGrid(cakesData, 0)}
