@@ -4,9 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import SpotlightCard from "@/components/ui/SpotlightCard";
-import CakeFilling from "@/components/CakeFilling";
 import { useState, useEffect } from "react";
-import { Eye, Heart, ShoppingCart, Star, ChefHat } from "lucide-react";
+import { Eye, Heart, ShoppingCart, Star } from "lucide-react";
 import chocolateTorte from "@/assets/chocolate-torte.jpg";
 import fruitCake from "@/assets/fruit-cake.jpg";
 import weddingCake from "@/assets/wedding-cake.jpg";
@@ -639,21 +638,6 @@ const Gallery = () => {
             </TabsList>
 
             <TabsContent value="cakes" className="space-y-8">
-              <div className={`text-center mb-8 ${isVisible ? 'animate-fade-in-left' : 'opacity-0'}`}>
-                <h3 className="text-2xl font-semibold text-foreground mb-2">
-                  Deutsche Torten & Kuchen
-                </h3>
-                <p className="text-muted-foreground">
-                  Klassische deutsche Backkunst mit modernen Kreationen
-                </p>
-              </div>
-              <div className="mb-8 p-6 bg-gradient-to-r from-pink-50 to-purple-50 rounded-lg border border-pink-200">
-                <div className="flex items-center gap-2 mb-4">
-                  <ChefHat className="h-6 w-6 text-pink-600" />
-                  <h3 className="text-xl font-semibold text-gray-800">Tortenfüllungen</h3>
-                </div>
-                <CakeFilling />
-              </div>
               <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`}>
                 {renderCategoryGrid(cakesData, 0)}
               </div>
