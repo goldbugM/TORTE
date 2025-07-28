@@ -174,6 +174,13 @@ interface CakeConfig {
   message: string;
   allergens: string[];
   delivery: string;
+  deliveryDate: string;
+  deliveryTime: string;
+  customerName: string;
+  customerEmail: string;
+  customerPhone: string;
+  customerAddress: string;
+  specialRequests: string;
   price: number;
 }
 
@@ -192,6 +199,13 @@ const TortenConfigurator = () => {
     message: '',
     allergens: [],
     delivery: '',
+    deliveryDate: '',
+    deliveryTime: '',
+    customerName: '',
+    customerEmail: '',
+    customerPhone: '',
+    customerAddress: '',
+    specialRequests: '',
     price: 0
   });
 
@@ -591,10 +605,43 @@ const TortenConfigurator = () => {
             </div>
 
             <div>
+              <Label htmlFor="deliveryDate">Gewünschtes Lieferdatum</Label>
+              <Input
+                id="deliveryDate"
+                type="date"
+                value={config.deliveryDate}
+                onChange={(e) => setConfig(prev => ({ ...prev, deliveryDate: e.target.value }))}
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="deliveryTime">Gewünschte Lieferzeit</Label>
+              <Select onValueChange={(value) => setConfig(prev => ({ ...prev, deliveryTime: value }))}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Uhrzeit wählen" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="09:00">09:00</SelectItem>
+                  <SelectItem value="10:00">10:00</SelectItem>
+                  <SelectItem value="11:00">11:00</SelectItem>
+                  <SelectItem value="12:00">12:00</SelectItem>
+                  <SelectItem value="13:00">13:00</SelectItem>
+                  <SelectItem value="14:00">14:00</SelectItem>
+                  <SelectItem value="15:00">15:00</SelectItem>
+                  <SelectItem value="16:00">16:00</SelectItem>
+                  <SelectItem value="17:00">17:00</SelectItem>
+                  <SelectItem value="18:00">18:00</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div>
               <Label>Besondere Wünsche/Anmerkungen</Label>
               <Textarea 
                 placeholder="Teilen Sie uns Ihre besonderen Wünsche mit..."
                 className="mt-2"
+                value={config.specialRequests}
+                onChange={(e) => setConfig(prev => ({ ...prev, specialRequests: e.target.value }))}
               />
             </div>
           </div>
@@ -622,26 +669,29 @@ const TortenConfigurator = () => {
                     <h4 className="font-semibold mb-2">Basis</h4>
                     <p>Größe: {sizeOptions.find(s => s.id === config.size)?.name}</p>
                     <p>Schichten: {config.layers}</p>
-                    <p>Biskuit: {baseTypes.find(b => b.id === config.baseType)?.name}</p>
+                    <p>Biskuit: {biscuitOptions.find(b => b.id === config.biscuitType)?.name}</p>
                   </div>
                   
                   <div>
                     <h4 className="font-semibold mb-2">Geschmack</h4>
                     <p>Füllungen: {config.filling.map(f => fillingOptions.find(fo => fo.id === f)?.name).join(', ') || 'Keine'}</p>
-                    <p>Frosting: {frostingOptions.find(f => f.id === config.frosting)?.name}</p>
+                    <p>Glasur: {frostingOptions.find(f => f.id === config.frosting)?.name}</p>
                   </div>
                   
                   <div>
                     <h4 className="font-semibold mb-2">Design</h4>
-                    <p>Farben: {config.colors.map(c => colorOptions.find(co => co.id === c)?.name).join(', ') || 'Keine'}</p>
+                    <p>Farbe: <span className="inline-block w-4 h-4 rounded ml-2" style={{backgroundColor: config.color}}></span></p>
                     <p>Dekorationen: {config.decoration.map(d => decorationOptions.find(deco => deco.id === d)?.name).join(', ') || 'Keine'}</p>
                   </div>
                   
                   <div>
                     <h4 className="font-semibold mb-2">Details</h4>
-                    <p>Anlass: {config.occasion || 'Nicht angegeben'}</p>
+                    <p>Anlass: {occasionOptions.find(o => o.id === config.occasion)?.name}</p>
                     <p>Nachricht: {config.message || 'Keine'}</p>
                     <p>Lieferung: {config.delivery === 'pickup' ? 'Abholung' : 'Lieferung'}</p>
+                    {config.deliveryDate && <p>Datum: {config.deliveryDate}</p>}
+                    {config.deliveryTime && <p>Uhrzeit: {config.deliveryTime}</p>}
+                    {config.specialRequests && <p>Besondere Wünsche: {config.specialRequests}</p>}
                   </div>
                 </div>
                 
@@ -649,11 +699,63 @@ const TortenConfigurator = () => {
                 
                 <div className="text-center">
                   <div className="text-3xl font-bold text-pink-600 mb-2">
-                    {config.price}€ {config.delivery === 'delivery' ? '+ 15€ Lieferung' : ''}
+                    {calculatePrice()}€ {config.delivery === 'delivery' ? '+ 15€ Lieferung' : ''}
                   </div>
                   <p className="text-sm text-muted-foreground">
                     Alle Preise sind Richtwerte. Der finale Preis wird bei der Bestellung bestätigt.
                   </p>
+                </div>
+                
+                <Separator />
+                
+                <div className="space-y-4">
+                  <h4 className="font-semibold text-lg">Kontaktinformationen</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="customerName">Name *</Label>
+                      <Input
+                        id="customerName"
+                        placeholder="Ihr vollständiger Name"
+                        value={config.customerName}
+                        onChange={(e) => setConfig(prev => ({ ...prev, customerName: e.target.value }))}
+                        required
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="customerEmail">E-Mail *</Label>
+                      <Input
+                        id="customerEmail"
+                        type="email"
+                        placeholder="ihre.email@beispiel.de"
+                        value={config.customerEmail}
+                        onChange={(e) => setConfig(prev => ({ ...prev, customerEmail: e.target.value }))}
+                        required
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="customerPhone">Telefon *</Label>
+                      <Input
+                        id="customerPhone"
+                        type="tel"
+                        placeholder="+49 123 456789"
+                        value={config.customerPhone}
+                        onChange={(e) => setConfig(prev => ({ ...prev, customerPhone: e.target.value }))}
+                        required
+                      />
+                    </div>
+                    {config.delivery === 'delivery' && (
+                      <div>
+                        <Label htmlFor="customerAddress">Lieferadresse *</Label>
+                        <Textarea
+                          id="customerAddress"
+                          placeholder="Straße, Hausnummer, PLZ, Ort"
+                          value={config.customerAddress}
+                          onChange={(e) => setConfig(prev => ({ ...prev, customerAddress: e.target.value }))}
+                          required
+                        />
+                      </div>
+                    )}
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -666,10 +768,23 @@ const TortenConfigurator = () => {
   };
 
   const scrollToContact = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Scroll zum Kontaktbereich oder zeige Erfolgsmeldung
+    alert(`Vielen Dank für Ihre Bestellung, ${config.customerName}! 
+    
+Ihre Torte: ${availableCakes.find(cake => cake.id === config.selectedCake)?.name}
+Lieferung: ${config.deliveryDate} um ${config.deliveryTime}
+Gesamtpreis: ${calculatePrice()}€${config.delivery === 'delivery' ? ' + 15€ Lieferung' : ''}
+
+Wir werden uns in Kürze bei Ihnen melden, um die Details zu besprechen.`);
+  };
+
+  const isOrderValid = () => {
+    return config.customerName && 
+           config.customerEmail && 
+           config.customerPhone && 
+           config.deliveryDate &&
+           config.deliveryTime &&
+           (config.delivery !== 'delivery' || config.customerAddress);
   };
 
   return (
@@ -734,7 +849,8 @@ const TortenConfigurator = () => {
                   disabled={
                     (currentStep === 0 && !config.selectedCake) ||
                     (currentStep === 1 && (!config.size || !config.baseType)) ||
-                    (currentStep === 2 && !config.frosting)
+                    (currentStep === 2 && !config.frosting) ||
+                    (currentStep === 4 && !config.delivery)
                   }
                 >
                   Weiter
@@ -743,6 +859,7 @@ const TortenConfigurator = () => {
                 <Button 
                   onClick={scrollToContact}
                   className="bg-pink-500 hover:bg-pink-600"
+                  disabled={!isOrderValid()}
                 >
                   <ShoppingCart className="h-4 w-4 mr-2" />
                   Jetzt bestellen
