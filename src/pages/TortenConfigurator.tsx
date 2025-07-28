@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -26,10 +26,142 @@ import {
   Plus,
   Minus,
   Eye,
-  Download
+  Download,
+  Gift
 } from 'lucide-react';
 
+// Verfügbare Torten aus der Galerie
+const availableCakes = [
+  {
+    id: 'schokoladen-torte',
+    name: 'Schokoladen Torte',
+    basePrice: 35,
+    description: 'Saftige Schokoladentorte mit cremiger Füllung und dunklen Beeren',
+    category: 'chocolate',
+    defaultFilling: ['chocolate-cream'],
+    defaultFrosting: 'chocolate'
+  },
+  {
+    id: 'buttercreme-torte',
+    name: 'Buttercreme Torte',
+    basePrice: 32,
+    description: 'Klassische Torte mit luftiger Buttercreme und zartem Biskuitboden',
+    category: 'classic',
+    defaultFilling: ['vanilla-cream'],
+    defaultFrosting: 'buttercream'
+  },
+  {
+    id: 'naked-torte',
+    name: 'Naked Torte',
+    basePrice: 38,
+    description: 'Moderne Torte ohne Fondant mit sichtbaren Schichten und frischen Früchten',
+    category: 'modern',
+    defaultFilling: ['fresh-fruits'],
+    defaultFrosting: 'cream-cheese'
+  },
+  {
+    id: 'mascarpone-torte',
+    name: 'Mascarpone-Frischkäse-Sahne Torte',
+    basePrice: 36,
+    description: 'Cremige Torte mit Mascarpone, Frischkäse und luftiger Sahne',
+    category: 'cream',
+    defaultFilling: ['mascarpone-cream'],
+    defaultFrosting: 'cream-cheese'
+  },
+  {
+    id: 'vintage-torte',
+    name: 'Vintage Torte',
+    basePrice: 45,
+    description: 'Elegante Torte im Vintage-Stil mit klassischen Dekorationen',
+    category: 'elegant',
+    defaultFilling: ['vanilla-cream'],
+    defaultFrosting: 'fondant'
+  },
+  {
+    id: 'schoko-torte',
+    name: 'Schoko Torte',
+    basePrice: 34,
+    description: 'Intensive Schokoladentorte für echte Schokoladenliebhaber',
+    category: 'chocolate',
+    defaultFilling: ['chocolate-cream'],
+    defaultFrosting: 'chocolate'
+  },
+  {
+    id: 'zitronen-tiramisu',
+    name: 'Zitronen Tiramisu',
+    basePrice: 30,
+    description: 'Erfrischende Variation des klassischen Tiramisu mit Zitrone',
+    category: 'fresh',
+    defaultFilling: ['lemon-mascarpone'],
+    defaultFrosting: 'mascarpone'
+  },
+  {
+    id: 'wassermelonen-torte',
+    name: 'Wassermelonen Torte',
+    basePrice: 28,
+    description: 'Gesunde Torte komplett aus frischen Früchten ohne Backen',
+    category: 'healthy',
+    defaultFilling: ['fresh-fruits'],
+    defaultFrosting: 'whipped-cream'
+  },
+  {
+    id: 'san-sebastian-cheesecake',
+    name: 'San Sebastian Cheesecake',
+    basePrice: 32,
+    description: 'Baskischer Käsekuchen mit karamellisierter Oberfläche',
+    category: 'cheesecake',
+    defaultFilling: ['cream-cheese'],
+    defaultFrosting: 'none'
+  },
+  {
+    id: 'fruchtige-sahnetorte',
+    name: 'Fruchtige Sahnetorte',
+    basePrice: 32,
+    description: 'Frische Beeren auf luftiger Sahne mit Biskuitboden',
+    category: 'fruity',
+    defaultFilling: ['fresh-fruits'],
+    defaultFrosting: 'whipped-cream'
+  },
+  {
+    id: 'hochzeitstorte',
+    name: 'Hochzeitstorte',
+    basePrice: 150,
+    description: 'Elegante mehrstöckige Torte für Ihren besonderen Tag',
+    category: 'wedding',
+    defaultFilling: ['vanilla-cream'],
+    defaultFrosting: 'fondant'
+  },
+  {
+    id: 'schwarzwalder-kirschtorte',
+    name: 'Schwarzwälder Kirschtorte',
+    basePrice: 38,
+    description: 'Klassische deutsche Torte mit Kirschen, Sahne und Schokolade',
+    category: 'traditional',
+    defaultFilling: ['cherry-cream'],
+    defaultFrosting: 'whipped-cream'
+  },
+  {
+    id: 'apfelstrudel',
+    name: 'Apfelstrudel',
+    basePrice: 18,
+    description: 'Traditioneller Strudel mit Äpfeln, Zimt und Vanillesauce',
+    category: 'traditional',
+    defaultFilling: ['apple-cinnamon'],
+    defaultFrosting: 'none'
+  },
+  {
+    id: 'kasekuchen',
+    name: 'Käsekuchen',
+    basePrice: 28,
+    description: 'Cremiger deutscher Käsekuchen mit frischen Beeren',
+    category: 'cheesecake',
+    defaultFilling: ['cream-cheese'],
+    defaultFrosting: 'none'
+  }
+];
+
 interface CakeConfig {
+  selectedCake: string;
   size: string;
   servings: number;
   layers: number;
@@ -47,6 +179,7 @@ interface CakeConfig {
 
 const TortenConfigurator = () => {
   const [config, setConfig] = useState<CakeConfig>({
+    selectedCake: '',
     size: '',
     servings: 8,
     layers: 2,
@@ -65,13 +198,28 @@ const TortenConfigurator = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
+  // Aktualisiere Konfiguration basierend auf ausgewählter Torte
+  useEffect(() => {
+    if (config.selectedCake) {
+      const selectedCakeData = availableCakes.find(cake => cake.id === config.selectedCake);
+      if (selectedCakeData) {
+        setConfig(prev => ({
+          ...prev,
+          filling: selectedCakeData.defaultFilling,
+          frosting: selectedCakeData.defaultFrosting
+        }));
+      }
+    }
+  }, [config.selectedCake]);
+
   useEffect(() => {
     setIsVisible(true);
     calculatePrice();
   }, [config]);
 
   const calculatePrice = () => {
-    let basePrice = 0;
+    const selectedCakeData = availableCakes.find(cake => cake.id === config.selectedCake);
+    let basePrice = selectedCakeData ? selectedCakeData.basePrice : 0;
     
     // Size pricing
     const sizePricing = {
@@ -102,11 +250,12 @@ const TortenConfigurator = () => {
   };
 
   const steps = [
-    { id: 0, title: 'Größe & Basis', icon: Cake },
-    { id: 1, title: 'Geschmack', icon: Heart },
-    { id: 2, title: 'Design', icon: Palette },
-    { id: 3, title: 'Details', icon: Sparkles },
-    { id: 4, title: 'Zusammenfassung', icon: Eye }
+    { id: 0, title: 'Torte wählen', icon: Cake },
+    { id: 1, title: 'Größe & Basis', icon: Layers },
+    { id: 2, title: 'Geschmack', icon: Heart },
+    { id: 3, title: 'Design', icon: Palette },
+    { id: 4, title: 'Details', icon: Sparkles },
+    { id: 5, title: 'Zusammenfassung', icon: Eye }
   ];
 
   const sizeOptions = [
@@ -179,6 +328,35 @@ const TortenConfigurator = () => {
         return (
           <div className="space-y-6">
             <div>
+              <h3 className="text-xl font-semibold mb-4">Wählen Sie eine Torte aus unserer Galerie</h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {availableCakes.map((cake) => (
+                  <Card 
+                    key={cake.id}
+                    className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
+                      config.selectedCake === cake.id ? 'ring-2 ring-pink-500 bg-pink-50' : ''
+                    }`}
+                    onClick={() => setConfig(prev => ({ ...prev, selectedCake: cake.id }))}
+                  >
+                    <CardContent className="p-4">
+                      <h4 className="font-semibold">{cake.name}</h4>
+                      <p className="text-sm text-muted-foreground mb-2">{cake.description}</p>
+                      <div className="flex justify-between items-center">
+                        <Badge variant="outline">{cake.category}</Badge>
+                        <span className="font-bold text-pink-600">ab {cake.basePrice}€</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+
+      case 1:
+        return (
+          <div className="space-y-6">
+            <div>
               <h3 className="text-xl font-semibold mb-4">Tortengröße wählen</h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {sizeOptions.map((size) => (
@@ -245,7 +423,7 @@ const TortenConfigurator = () => {
           </div>
         );
 
-      case 1:
+      case 2:
         return (
           <div className="space-y-6">
             <div>
@@ -308,7 +486,7 @@ const TortenConfigurator = () => {
           </div>
         );
 
-      case 2:
+      case 3:
         return (
           <div className="space-y-6">
             <div>
@@ -368,7 +546,7 @@ const TortenConfigurator = () => {
           </div>
         );
 
-      case 3:
+      case 4:
         return (
           <div className="space-y-6">
             <div>
@@ -422,7 +600,7 @@ const TortenConfigurator = () => {
           </div>
         );
 
-      case 4:
+      case 5:
         return (
           <div className="space-y-6">
             <Card>
@@ -435,6 +613,12 @@ const TortenConfigurator = () => {
               <CardContent className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
+                    <h4 className="font-semibold mb-2">Ausgewählte Torte</h4>
+                    <p className="font-medium text-pink-600">{availableCakes.find(cake => cake.id === config.selectedCake)?.name || 'Keine Torte ausgewählt'}</p>
+                    <p className="text-sm text-muted-foreground mb-4">
+                      {availableCakes.find(cake => cake.id === config.selectedCake)?.description}
+                    </p>
+                    
                     <h4 className="font-semibold mb-2">Basis</h4>
                     <p>Größe: {sizeOptions.find(s => s.id === config.size)?.name}</p>
                     <p>Schichten: {config.layers}</p>
@@ -548,8 +732,9 @@ const TortenConfigurator = () => {
                 <Button 
                   onClick={() => setCurrentStep(Math.min(steps.length - 1, currentStep + 1))}
                   disabled={
-                    (currentStep === 0 && (!config.size || !config.baseType)) ||
-                    (currentStep === 1 && !config.frosting)
+                    (currentStep === 0 && !config.selectedCake) ||
+                    (currentStep === 1 && (!config.size || !config.baseType)) ||
+                    (currentStep === 2 && !config.frosting)
                   }
                 >
                   Weiter
