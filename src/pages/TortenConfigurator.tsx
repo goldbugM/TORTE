@@ -163,16 +163,15 @@ const availableCakes = [
 interface CakeConfig {
   selectedCake: string;
   size: string;
-  servings: number;
   layers: number;
   baseType: string;
+  biscuitType: string;
   filling: string[];
   frosting: string;
+  color: string;
   decoration: string[];
-  colors: string[];
   occasion: string;
   message: string;
-  allergens: string[];
   delivery: string;
   deliveryDate: string;
   deliveryTime: string;
@@ -181,6 +180,8 @@ interface CakeConfig {
   customerPhone: string;
   customerAddress: string;
   specialRequests: string;
+  glutenFree: boolean;
+  lactoseFree: boolean;
   price: number;
 }
 
@@ -188,16 +189,15 @@ const TortenConfigurator = () => {
   const [config, setConfig] = useState<CakeConfig>({
     selectedCake: '',
     size: '',
-    servings: 8,
-    layers: 2,
+    layers: 1,
     baseType: '',
+    biscuitType: '',
     filling: [],
     frosting: '',
+    color: '',
     decoration: [],
-    colors: [],
     occasion: '',
     message: '',
-    allergens: [],
     delivery: '',
     deliveryDate: '',
     deliveryTime: '',
@@ -206,6 +206,8 @@ const TortenConfigurator = () => {
     customerPhone: '',
     customerAddress: '',
     specialRequests: '',
+    glutenFree: false,
+    lactoseFree: false,
     price: 0
   });
 
@@ -260,8 +262,18 @@ const TortenConfigurator = () => {
       basePrice += 20;
     }
     
-    setConfig(prev => ({ ...prev, price: basePrice }));
+    // Special dietary requirements
+    const glutenFreePrice = config.glutenFree ? 5 : 0;
+    const lactoseFreePrice = config.lactoseFree ? 3 : 0;
+    
+    return Math.round(basePrice + glutenFreePrice + lactoseFreePrice);
   };
+
+  // Update price whenever config changes
+  useEffect(() => {
+    const newPrice = calculatePrice();
+    setConfig(prev => ({ ...prev, price: newPrice }));
+  }, [config.selectedCake, config.size, config.layers, config.filling, config.frosting, config.decoration, config.glutenFree, config.lactoseFree]);
 
   const steps = [
     { id: 0, title: 'Torte wählen', icon: Cake },
@@ -504,20 +516,18 @@ const TortenConfigurator = () => {
         return (
           <div className="space-y-6">
             <div>
-              <h3 className="text-xl font-semibold mb-4">Farben wählen</h3>
+              <h3 className="text-xl font-semibold mb-4">Farbe wählen</h3>
               <div className="grid grid-cols-4 md:grid-cols-8 gap-3">
                 {colorOptions.map((color) => (
                   <div
                     key={color.id}
                     className={`cursor-pointer p-3 rounded-lg border-2 transition-all duration-200 ${
-                      config.colors.includes(color.id) ? 'border-pink-500 scale-110' : 'border-gray-200'
+                      config.color === color.id ? 'border-pink-500 scale-110' : 'border-gray-200'
                     }`}
                     onClick={() => {
                       setConfig(prev => ({
                         ...prev,
-                        colors: prev.colors.includes(color.id)
-                          ? prev.colors.filter(c => c !== color.id)
-                          : [...prev.colors, color.id]
+                        color: color.id
                       }));
                     }}
                   >
@@ -555,6 +565,55 @@ const TortenConfigurator = () => {
                     </CardContent>
                   </Card>
                 ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Besondere Anforderungen</h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Card 
+                  className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
+                    config.glutenFree ? 'ring-2 ring-green-500 bg-green-50' : ''
+                  }`}
+                  onClick={() => {
+                    setConfig(prev => ({
+                      ...prev,
+                      glutenFree: !prev.glutenFree
+                    }));
+                  }}
+                >
+                  <CardContent className="p-4 text-center">
+                    <h4 className="font-semibold">Glutenfrei</h4>
+                    <p className="text-sm text-muted-foreground mt-2">
+                      Torte ohne Gluten (+5€)
+                    </p>
+                    <Badge variant={config.glutenFree ? "default" : "secondary"} className="mt-2">
+                      {config.glutenFree ? "Ausgewählt" : "+5€"}
+                    </Badge>
+                  </CardContent>
+                </Card>
+
+                <Card 
+                  className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
+                    config.lactoseFree ? 'ring-2 ring-blue-500 bg-blue-50' : ''
+                  }`}
+                  onClick={() => {
+                    setConfig(prev => ({
+                      ...prev,
+                      lactoseFree: !prev.lactoseFree
+                    }));
+                  }}
+                >
+                  <CardContent className="p-4 text-center">
+                    <h4 className="font-semibold">Laktosefrei</h4>
+                    <p className="text-sm text-muted-foreground mt-2">
+                      Torte ohne Laktose (+3€)
+                    </p>
+                    <Badge variant={config.lactoseFree ? "default" : "secondary"} className="mt-2">
+                      {config.lactoseFree ? "Ausgewählt" : "+3€"}
+                    </Badge>
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </div>
@@ -669,7 +728,7 @@ const TortenConfigurator = () => {
                     <h4 className="font-semibold mb-2">Basis</h4>
                     <p>Größe: {sizeOptions.find(s => s.id === config.size)?.name}</p>
                     <p>Schichten: {config.layers}</p>
-                    <p>Biskuit: {biscuitOptions.find(b => b.id === config.biscuitType)?.name}</p>
+                    <p>Biskuit: {baseTypes.find(b => b.id === config.baseType)?.name}</p>
                   </div>
                   
                   <div>
@@ -680,13 +739,19 @@ const TortenConfigurator = () => {
                   
                   <div>
                     <h4 className="font-semibold mb-2">Design</h4>
-                    <p>Farbe: <span className="inline-block w-4 h-4 rounded ml-2" style={{backgroundColor: config.color}}></span></p>
+                    <p>Farbe: <span className="inline-block w-4 h-4 rounded ml-2" style={{backgroundColor: colorOptions.find(c => c.id === config.color)?.hex}}></span> {colorOptions.find(c => c.id === config.color)?.name}</p>
                     <p>Dekorationen: {config.decoration.map(d => decorationOptions.find(deco => deco.id === d)?.name).join(', ') || 'Keine'}</p>
+                    {(config.glutenFree || config.lactoseFree) && (
+                      <p>Besondere Anforderungen: {[
+                        config.glutenFree ? 'Glutenfrei (+5€)' : '',
+                        config.lactoseFree ? 'Laktosefrei (+3€)' : ''
+                      ].filter(Boolean).join(', ')}</p>
+                    )}
                   </div>
                   
                   <div>
                     <h4 className="font-semibold mb-2">Details</h4>
-                    <p>Anlass: {occasionOptions.find(o => o.id === config.occasion)?.name}</p>
+                    <p>Anlass: {config.occasion}</p>
                     <p>Nachricht: {config.message || 'Keine'}</p>
                     <p>Lieferung: {config.delivery === 'pickup' ? 'Abholung' : 'Lieferung'}</p>
                     {config.deliveryDate && <p>Datum: {config.deliveryDate}</p>}
@@ -699,7 +764,7 @@ const TortenConfigurator = () => {
                 
                 <div className="text-center">
                   <div className="text-3xl font-bold text-pink-600 mb-2">
-                    {calculatePrice()}€ {config.delivery === 'delivery' ? '+ 15€ Lieferung' : ''}
+                    {config.price}€ {config.delivery === 'delivery' ? '+ 15€ Lieferung' : ''}
                   </div>
                   <p className="text-sm text-muted-foreground">
                     Alle Preise sind Richtwerte. Der finale Preis wird bei der Bestellung bestätigt.
@@ -773,7 +838,7 @@ const TortenConfigurator = () => {
     
 Ihre Torte: ${availableCakes.find(cake => cake.id === config.selectedCake)?.name}
 Lieferung: ${config.deliveryDate} um ${config.deliveryTime}
-Gesamtpreis: ${calculatePrice()}€${config.delivery === 'delivery' ? ' + 15€ Lieferung' : ''}
+Gesamtpreis: ${config.price}€${config.delivery === 'delivery' ? ' + 15€ Lieferung' : ''}
 
 Wir werden uns in Kürze bei Ihnen melden, um die Details zu besprechen.`);
   };
@@ -850,6 +915,7 @@ Wir werden uns in Kürze bei Ihnen melden, um die Details zu besprechen.`);
                     (currentStep === 0 && !config.selectedCake) ||
                     (currentStep === 1 && (!config.size || !config.baseType)) ||
                     (currentStep === 2 && !config.frosting) ||
+                    (currentStep === 3 && !config.color) ||
                     (currentStep === 4 && !config.delivery)
                   }
                 >
