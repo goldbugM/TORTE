@@ -28,6 +28,19 @@ const CarouselGallery = () => {
   const [favorites, setFavorites] = useState<number[]>([]);
   const [isVisible, setIsVisible] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -47,14 +60,23 @@ const CarouselGallery = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Auto-scroll effect - reset when mobile state changes
+  useEffect(() => {
+    setCurrentSlide(0); // Reset to first slide when layout changes
+  }, [isMobile]);
+
   // Auto-scroll effect
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide(prev => (prev + 1) % Math.ceil(cakesData.length / 6));
+      setCurrentSlide(prev => {
+        const itemsPerSlide = isMobile ? 2 : 6;
+        const maxSlides = Math.ceil(cakesData.length / itemsPerSlide);
+        return (prev + 1) % maxSlides;
+      });
     }, 4000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isMobile]);
 
   const toggleFavorite = (index: number) => {
     setFavorites(prev => 
@@ -326,7 +348,7 @@ const CarouselGallery = () => {
     const isFavorite = favorites.includes(globalIndex);
     
     return (
-      <div key={index} className="flex-shrink-0 w-80 mx-2">
+      <div key={index} className="flex-shrink-0 w-full">
         <SpotlightCard 
           className="p-0 border-0 bg-transparent"
           spotlightColor="rgba(255, 182, 193, 0.15)"
@@ -463,7 +485,9 @@ const CarouselGallery = () => {
   };
 
   const renderCarousel = (items: any[], categoryIndex: number) => {
-    const itemsPerSlide = 6; // 3 items per row, 2 rows
+    // Responsive items per slide: 2 on mobile (1 per row, 2 rows), 6 on desktop (3 per row, 2 rows)
+    const itemsPerSlide = isMobile ? 2 : 6;
+    const itemsPerRow = isMobile ? 1 : 3;
     const totalSlides = Math.ceil(items.length / itemsPerSlide);
     
     const nextSlide = () => {
@@ -480,7 +504,7 @@ const CarouselGallery = () => {
         <Button
           variant="outline"
           size="icon"
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg"
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg md:left-0 -left-2"
           onClick={prevSlide}
         >
           <ChevronLeft className="h-4 w-4" />
@@ -489,14 +513,14 @@ const CarouselGallery = () => {
         <Button
           variant="outline"
           size="icon"
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg"
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg md:right-0 -right-2"
           onClick={nextSlide}
         >
           <ChevronRight className="h-4 w-4" />
         </Button>
 
         {/* Carousel Container */}
-        <div className="overflow-hidden mx-12">
+        <div className="overflow-hidden mx-8 md:mx-12">
           <div 
             className="flex transition-transform duration-500 ease-in-out"
             style={{ 
@@ -505,16 +529,16 @@ const CarouselGallery = () => {
           >
             {Array.from({ length: totalSlides }, (_, slideIndex) => (
               <div key={slideIndex} className="w-full flex-shrink-0">
-                <div className="grid grid-cols-3 gap-4 mb-4">
+                <div className={`grid grid-cols-1 md:grid-cols-3 gap-4 mb-4`}>
                   {/* First Row */}
-                  {items.slice(slideIndex * itemsPerSlide, slideIndex * itemsPerSlide + 3).map((item, index) => 
+                  {items.slice(slideIndex * itemsPerSlide, slideIndex * itemsPerSlide + itemsPerRow).map((item, index) => 
                     renderCarouselItem(item, slideIndex * itemsPerSlide + index, categoryIndex)
                   )}
                 </div>
-                <div className="grid grid-cols-3 gap-4">
+                <div className={`grid grid-cols-1 md:grid-cols-3 gap-4`}>
                   {/* Second Row */}
-                  {items.slice(slideIndex * itemsPerSlide + 3, slideIndex * itemsPerSlide + 6).map((item, index) => 
-                    renderCarouselItem(item, slideIndex * itemsPerSlide + 3 + index, categoryIndex)
+                  {items.slice(slideIndex * itemsPerSlide + itemsPerRow, slideIndex * itemsPerSlide + itemsPerSlide).map((item, index) => 
+                    renderCarouselItem(item, slideIndex * itemsPerSlide + itemsPerRow + index, categoryIndex)
                   )}
                 </div>
               </div>
