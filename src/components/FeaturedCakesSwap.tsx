@@ -69,7 +69,7 @@ const FeaturedCakesSwap = () => {
   };
 
   return (
-    <section id="featured" className="lg:py-32 bg-gradient-to-br from-pink-50 via-white to-purple-50 relative min-h-[600px] lg:min-h-[700px]">
+    <section id="featured" className="pt-20 pb-16 lg:py-32 bg-gradient-to-br from-pink-50 via-white to-purple-50 relative min-h-[600px] lg:min-h-[700px]">
       <div className="container mx-auto px-4 h-full">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[500px] lg:min-h-[600px]">
           {/* Left Content */}
@@ -78,7 +78,7 @@ const FeaturedCakesSwap = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="space-y-6 lg:space-y-8 flex flex-col justify-center order-2 lg:order-1 z-10"
+            className="space-y-6 lg:space-y-8 flex flex-col justify-center order-2 lg:order-1 z-10 text-center lg:text-left"
           >
             <div>
               <motion.span
@@ -86,7 +86,7 @@ const FeaturedCakesSwap = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className="inline-block px-4 py-2 bg-pink-100 text-pink-600 rounded-full text-sm font-medium mb-4"
+                className="inline-block px-4 py-2 bg-pink-100 text-pink-600 rounded-full text-sm font-medium mb-4 mx-auto lg:mx-0"
               >
                 Unsere Bestseller
               </motion.span>
@@ -107,7 +107,7 @@ const FeaturedCakesSwap = () => {
               onClick={navigateToConfigurator}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center px-6 lg:px-8 py-3 lg:py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-fit"
+              className="inline-flex items-center px-6 lg:px-8 py-3 lg:py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 w-fit mx-auto lg:mx-0"
             >
               <span className="text-sm lg:text-base">Konfiguriere deine Torte</span>
               <svg className="ml-2 w-4 h-4 lg:w-5 lg:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -122,11 +122,11 @@ const FeaturedCakesSwap = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="flex justify-center lg:justify-end items-center order-1 lg:order-2 mb-8 lg:mb-0 relative z-10"
+            className="flex justify-center lg:justify-end items-center order-1 lg:order-2 mb-8 lg:mb-0 mt-8 lg:mt-0 relative z-10"
           >
             <div className="relative w-full max-w-[400px] h-[400px] lg:h-[500px] flex items-center justify-center">
               {/* Mobile CardSwap */}
-              <div className="block lg:hidden absolute inset-0 flex items-center justify-center translate-y-3">
+              <div className="block lg:hidden absolute inset-0 flex items-center justify-center translate-y-8">
                 <CardSwap
                   width={300}
                   height={400}

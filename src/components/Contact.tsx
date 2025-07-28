@@ -155,37 +155,6 @@ const Contact = () => {
                 </CardContent>
               </Card>
             </StarBorder>
-
-            <StarBorder 
-              as="div" 
-              color="rgb(34, 197, 94)" 
-              speed="12s" 
-              thickness={2}
-              className="rounded-lg"
-            >
-              <Card className="shadow-soft border-0">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold text-primary mb-4">
-                    Öffnungszeiten
-                  </h3>
-                  <div className="space-y-2 text-muted-foreground">
-                    <div className="flex justify-between">
-                      <span>Montag - Freitag:</span>
-                      <span>08:00 - 18:00</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Samstag:</span>
-                      <span>08:00 - 16:00</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Sonntag:</span>
-                      <span>Geschlossen</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </StarBorder>
-
           </div>
         </div>
       </div>

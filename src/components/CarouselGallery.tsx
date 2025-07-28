@@ -31,6 +31,7 @@ const CarouselGallery = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isHovered, setIsHovered] = useState(false); // New state for hover
 
   const navigateToConfigurator = () => {
     navigate('/torten-konfigurator');
@@ -71,8 +72,10 @@ const CarouselGallery = () => {
     setCurrentSlide(0); // Reset to first slide when layout changes
   }, [isMobile]);
 
-  // Auto-scroll effect
+  // Auto-scroll effect - now pauses when hovered
   useEffect(() => {
+    if (isHovered) return; // Don't start interval if hovered
+
     const interval = setInterval(() => {
       setCurrentSlide(prev => {
         const itemsPerSlide = isMobile ? 2 : 6;
@@ -82,7 +85,7 @@ const CarouselGallery = () => {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [isMobile]);
+  }, [isMobile, isHovered]); // Added isHovered dependency
 
   const toggleFavorite = (index: number) => {
     setFavorites(prev => 
@@ -354,7 +357,12 @@ const CarouselGallery = () => {
     const isFavorite = favorites.includes(globalIndex);
     
     return (
-      <div key={index} className="flex-shrink-0 w-full">
+      <div 
+        key={index} 
+        className="flex-shrink-0 w-full"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <SpotlightCard 
           className="p-0 border-0 bg-transparent"
           spotlightColor="rgba(255, 182, 193, 0.15)"
@@ -500,6 +508,23 @@ const CarouselGallery = () => {
     );
   };
 
+  // Function to determine if carousel should be used based on item count
+  const shouldUseCarousel = (items: any[]) => {
+    const itemsPerSlide = isMobile ? 2 : 6;
+    return items.length > itemsPerSlide;
+  };
+
+  // Render simple grid for categories with few items
+  const renderSimpleGrid = (items: any[], categoryIndex: number) => {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {items.map((item, index) => 
+          renderCarouselItem(item, index, categoryIndex)
+        )}
+      </div>
+    );
+  };
+
   const renderCarousel = (items: any[], categoryIndex: number) => {
     // Responsive items per slide: 2 on mobile (1 per row, 2 rows), 6 on desktop (3 per row, 2 rows)
     const itemsPerSlide = isMobile ? 2 : 6;
@@ -536,7 +561,11 @@ const CarouselGallery = () => {
         </Button>
 
         {/* Carousel Container */}
-        <div className="overflow-hidden mx-8 md:mx-12">
+        <div 
+          className="overflow-hidden mx-8 md:mx-12"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
           <div 
             className="flex transition-transform duration-500 ease-in-out"
             style={{ 
@@ -578,6 +607,13 @@ const CarouselGallery = () => {
     );
   };
 
+  // Main render function that decides between carousel and grid
+  const renderGalleryContent = (items: any[], categoryIndex: number) => {
+    return shouldUseCarousel(items) 
+      ? renderCarousel(items, categoryIndex)
+      : renderSimpleGrid(items, categoryIndex);
+  };
+
   return (
     <section id="gallery" className="bg-gradient-to-br from-pink-50 via-white to-purple-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -599,19 +635,19 @@ const CarouselGallery = () => {
           <Tabs defaultValue="cakes" className="w-full">
             <TabsList className="grid w-full grid-cols-3 mb-8">
               <TabsTrigger value="cakes" className="text-sm md:text-base">
-                Torten & Kuchen
+                TORTEN
               </TabsTrigger>
               <TabsTrigger value="turkish-sweet" className="text-sm md:text-base">
-                Türkische Süßspeisen
+                SÜSSPEISEN
               </TabsTrigger>
               <TabsTrigger value="turkish-savory" className="text-sm md:text-base">
-                Türkische Spezialitäten
+                SPEZIALITÄTEN
               </TabsTrigger>
             </TabsList>
 
             <TabsContent value="cakes" className="space-y-8">
               <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`}>
-                {renderCarousel(cakesData, 0)}
+                {renderGalleryContent(cakesData, 0)}
               </div>
             </TabsContent>
 
@@ -625,7 +661,7 @@ const CarouselGallery = () => {
                 </p>
               </div>
               <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`}>
-                {renderCarousel(turkishSweetData, 1)}
+                {renderGalleryContent(turkishSweetData, 1)}
               </div>
             </TabsContent>
 
@@ -639,7 +675,7 @@ const CarouselGallery = () => {
                 </p>
               </div>
               <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`}>
-                {renderCarousel(turkishSavoryData, 2)}
+                {renderGalleryContent(turkishSavoryData, 2)}
               </div>
             </TabsContent>
           </Tabs>

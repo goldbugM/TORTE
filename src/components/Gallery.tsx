@@ -641,15 +641,15 @@ const Gallery = () => {
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
         }`}>
           <Tabs defaultValue="cakes" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8">
-              <TabsTrigger value="cakes" className="text-sm md:text-base">
-                Torten & Kuchen
+            <TabsList className="grid w-full grid-cols-3 mb-8 h-auto">
+              <TabsTrigger value="cakes" className="text-xs sm:text-sm md:text-base px-2 py-3 h-auto">
+                TORTEN
               </TabsTrigger>
-              <TabsTrigger value="turkish-sweet" className="text-sm md:text-base">
-                Türkische Süßspeisen
+              <TabsTrigger value="turkish-sweet" className="text-xs sm:text-sm md:text-base px-2 py-3 h-auto">
+                SÜSSPEISEN
               </TabsTrigger>
-              <TabsTrigger value="turkish-savory" className="text-sm md:text-base">
-                Türkische Spezialitäten
+              <TabsTrigger value="turkish-savory" className="text-xs sm:text-sm md:text-base px-2 py-3 h-auto">
+                SPEZIALITÄTEN
               </TabsTrigger>
             </TabsList>
 

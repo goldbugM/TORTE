@@ -44,9 +44,7 @@ const Header = () => {
                 <span className="font-light">Musterstraße 123, 12345 Musterstadt</span>
               </div>
             </div>
-            <div className="text-gray-600 font-light">
-              Mo-Fr: 08:00-18:00 | Sa: 08:00-16:00
-            </div>
+
           </div>
         </div>
       </div>
