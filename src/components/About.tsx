@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ChefHat, Heart, Award, Users, Clock, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
+import FeatureCarousel, { FeatureCarouselItem } from "./FeatureCarousel";
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -32,23 +33,27 @@ const About = () => {
     }
   };
 
-  const features = [
+  const features: FeatureCarouselItem[] = [
     {
+      id: "handgemacht",
       icon: ChefHat,
       title: "Handgemacht",
       description: "Jede Torte wird mit traditionellen Methoden und viel Liebe zum Detail hergestellt"
     },
     {
+      id: "qualitaet",
       icon: Heart,
       title: "Qualitätszutaten",
       description: "Nur die besten und frischesten Zutaten kommen in unsere Backwaren"
     },
     {
+      id: "erfahrung",
       icon: Award,
       title: "Erfahrung",
       description: "Über 10 Jahre Erfahrung in der Konditorei und türkischen Küche"
     },
     {
+      id: "persoenlich",
       icon: Users,
       title: "Persönlich",
       description: "Individuelle Beratung und maßgeschneiderte Lösungen für jeden Anlass"
@@ -114,26 +119,16 @@ const About = () => {
 
           {/* Right Content - Features Grid */}
           <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {features.map((feature, index) => (
-                <Card 
-                  key={index} 
-                  className="border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <CardContent className="p-6 text-center">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <feature.icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <h4 className="font-semibold text-foreground mb-2">
-                      {feature.title}
-                    </h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
+            <div className="flex justify-center">
+              <FeatureCarousel 
+                items={features}
+                baseWidth={350}
+                autoplay={true}
+                autoplayDelay={4000}
+                pauseOnHover={true}
+                loop={true}
+                round={false}
+              />
             </div>
           </div>
         </div>
