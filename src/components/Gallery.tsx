@@ -278,16 +278,6 @@ const Gallery = () => {
       allergens: ["Gluten", "Nüsse", "Eier"]
     },
     {
-      image: "/placeholder-sweet.svg",
-      title: "Revani",
-      description: "Saftiger Grießkuchen mit Zitronensirup",
-      price: "ab 18€/Portion",
-      rating: 4.8,
-      popular: true,
-      ingredients: ["Grieß", "Joghurt", "Zitronensirup", "Kokosraspel"],
-      allergens: ["Gluten", "Milch", "Eier"]
-    },
-    {
       image: kunefe,
       title: "Künefe",
       description: "Warmes Dessert mit geschmolzenem Käse und Kadayıf-Teig",
@@ -459,16 +449,6 @@ const Gallery = () => {
       popular: false,
       ingredients: ["Yufka-Teig", "Käse", "Petersilie", "Öl"],
       allergens: ["Gluten", "Milch"]
-    },
-    {
-      image: menemen,
-      title: "Menemen",
-      description: "Türkisches Rührei mit Tomaten, Paprika und Gewürzen",
-      price: "ab 10€/Portion",
-      rating: 4.5,
-      popular: false,
-      ingredients: ["Eier", "Tomaten", "Paprika", "Zwiebeln"],
-      allergens: ["Eier"]
     }
   ];
 
