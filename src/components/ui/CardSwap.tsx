@@ -47,7 +47,8 @@ const makeSlot = (
   zIndex: total - i,
 });
 
-const placeNow = (el: HTMLElement, slot: any, skew: number) =>
+const placeNow = (el: HTMLElement | null, slot: any, skew: number) => {
+  if (!el) return;
   gsap.set(el, {
     x: slot.x,
     y: slot.y,
@@ -59,6 +60,7 @@ const placeNow = (el: HTMLElement, slot: any, skew: number) =>
     zIndex: slot.zIndex,
     force3D: true,
   });
+};
 
 const CardSwap: React.FC<CardSwapProps> = ({
   width = 400,
@@ -103,10 +105,14 @@ const CardSwap: React.FC<CardSwapProps> = ({
   const container = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Ensure all refs are available before starting animations
+    const allRefsAvailable = refs.every(ref => ref.current !== null);
+    if (!allRefsAvailable) return;
+
     const total = refs.length;
     refs.forEach((r, i) =>
       placeNow(
-        r.current!,
+        r.current,
         makeSlot(i, cardDistance, verticalDistance, total),
         skewAmount
       )
@@ -116,7 +122,9 @@ const CardSwap: React.FC<CardSwapProps> = ({
       if (order.current.length < 2) return;
 
       const [front, ...rest] = order.current;
-      const elFront = refs[front].current!;
+      const elFront = refs[front].current;
+      if (!elFront) return;
+      
       const tl = gsap.timeline();
       tlRef.current = tl;
 
@@ -128,7 +136,9 @@ const CardSwap: React.FC<CardSwapProps> = ({
 
       tl.addLabel("promote", `-=${config.durDrop * config.promoteOverlap}`);
       rest.forEach((idx, i) => {
-        const el = refs[idx].current!;
+        const el = refs[idx].current;
+        if (!el) return;
+        
         const slot = makeSlot(i, cardDistance, verticalDistance, refs.length);
         tl.set(el, { zIndex: slot.zIndex }, "promote");
         tl.to(
@@ -153,21 +163,25 @@ const CardSwap: React.FC<CardSwapProps> = ({
       tl.addLabel("return", `promote+=${config.durMove * config.returnDelay}`);
       tl.call(
         () => {
-          gsap.set(elFront, { zIndex: backSlot.zIndex });
+          if (elFront) {
+            gsap.set(elFront, { zIndex: backSlot.zIndex });
+          }
         },
         undefined,
         "return"
       );
-      tl.set(elFront, { x: backSlot.x, z: backSlot.z }, "return");
-      tl.to(
-        elFront,
-        {
-          y: backSlot.y,
-          duration: config.durReturn,
-          ease: config.ease,
-        },
-        "return"
-      );
+      if (elFront) {
+        tl.set(elFront, { x: backSlot.x, z: backSlot.z }, "return");
+        tl.to(
+          elFront,
+          {
+            y: backSlot.y,
+            duration: config.durReturn,
+            ease: config.ease,
+          },
+          "return"
+        );
+      }
 
       tl.call(() => {
         order.current = [...rest, front];
@@ -177,8 +191,8 @@ const CardSwap: React.FC<CardSwapProps> = ({
     swap();
     intervalRef.current = window.setInterval(swap, delay);
 
-    if (pauseOnHover) {
-      const node = container.current!;
+    if (pauseOnHover && container.current) {
+      const node = container.current;
       const pause = () => {
         tlRef.current?.pause();
         clearInterval(intervalRef.current);
@@ -196,7 +210,7 @@ const CardSwap: React.FC<CardSwapProps> = ({
       };
     }
     return () => clearInterval(intervalRef.current);
-  }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, easing]);
+  }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, easing, refs]);
 
   const rendered = childArr.map((child, i) =>
     isValidElement(child)

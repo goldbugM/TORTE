@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import SpotlightCard from "@/components/ui/SpotlightCard";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Eye, Heart, ShoppingCart, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import chocolateTorte from "@/assets/chocolate-torte.jpg";
 import fruitCake from "@/assets/fruit-cake.jpg";
@@ -25,10 +26,15 @@ import manti from "@/assets/manti.jpg";
 import sigaraBoregi from "@/assets/sigara-boregi.jpg";
 
 const CarouselGallery = () => {
+  const navigate = useNavigate();
   const [favorites, setFavorites] = useState<number[]>([]);
   const [isVisible, setIsVisible] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+
+  const navigateToConfigurator = () => {
+    navigate('/torten-konfigurator');
+  };
 
   // Check if mobile on mount and resize
   useEffect(() => {
@@ -469,13 +475,23 @@ const CarouselGallery = () => {
                 <div className="text-lg font-bold text-primary">
                   {item.price}
                 </div>
-                <Button 
-                  size="sm" 
-                  onClick={scrollToContact}
-                  className="hover:scale-105 transition-transform duration-200"
-                >
-                  Bestellen
-                </Button>
+                <div className="flex gap-2">
+                  <Button 
+                    size="sm" 
+                    variant="outline"
+                    onClick={navigateToConfigurator}
+                    className="hover:scale-105 transition-transform duration-200"
+                  >
+                    Konfigurieren
+                  </Button>
+                  <Button 
+                    size="sm" 
+                    onClick={scrollToContact}
+                    className="hover:scale-105 transition-transform duration-200"
+                  >
+                    Bestellen
+                  </Button>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -563,8 +579,8 @@ const CarouselGallery = () => {
   };
 
   return (
-    <section id="gallery" className="py-20 bg-gradient-rose">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="gallery" className="bg-gradient-to-br from-pink-50 via-white to-purple-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className={`text-center mb-16 transform transition-all duration-1000 delay-300 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
         }`}>
@@ -629,28 +645,7 @@ const CarouselGallery = () => {
           </Tabs>
         </div>
 
-        {/* Call to action */}
-        <div className={`text-center mt-16 transform transition-all duration-1000 delay-700 ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-        }`}>
-          <div className="bg-background/80 rounded-2xl p-8 border border-primary/20">
-            <h3 className="text-2xl font-bold text-foreground mb-4">
-              Individuelle Wünsche?
-            </h3>
-            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Haben Sie spezielle Wünsche oder Allergien? Wir erstellen gerne individuelle Torten 
-              nach Ihren Vorstellungen. Kontaktieren Sie uns für eine persönliche Beratung.
-            </p>
-            <Button 
-              variant="hero" 
-              size="lg"
-              onClick={scrollToContact}
-              className="hover:scale-105 transition-transform duration-300"
-            >
-              Individuelle Beratung anfragen
-            </Button>
-          </div>
-        </div>
+
       </div>
     </section>
   );

@@ -55,8 +55,8 @@ const Statistics = () => {
   ];
 
   return (
-    <section id="statistics" className="py-20 bg-gradient-to-br from-pink-50 to-purple-50">
-      <div className="container mx-auto px-4">
+    <section id="statistics" className="bg-gradient-to-br from-pink-50 via-white to-purple-50">
+      <div className="container mx-auto px-4 py-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}

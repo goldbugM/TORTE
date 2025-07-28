@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import GlareHover from "@/components/ui/GlareHover";
 import { useState, useEffect } from "react";
-import { ChefHat, Heart, Star, ArrowDown } from "lucide-react";
+import { ChefHat, Heart, Star, ArrowDown, Eye, Instagram } from "lucide-react";
 import heroImage from "@/assets/hero-cakes.jpg";
 import blackForestCake from "@/assets/black-forest-cake.jpg";
 import chocolateTorte from "@/assets/chocolate-torte.jpg";
@@ -115,7 +115,7 @@ const Hero = () => {
 
           
           {/* Animated buttons */}
-          <div className={`flex flex-col sm:flex-row gap-4 transform transition-all duration-1000 delay-700 ${
+          <div className={`flex flex-col sm:flex-row gap-6 transform transition-all duration-1000 delay-700 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}>
             <GlareHover
@@ -123,42 +123,54 @@ const Hero = () => {
               glareOpacity={0.4}
               glareSize={120}
               transitionDuration={800}
-              className="inline-block"
+              className="inline-block flex-1"
             >
               <Button 
                 variant="hero" 
                 size="lg" 
-                className="shadow-elegant hover:shadow-rose hover:scale-105 transition-all duration-300 group w-full bg-primary hover:bg-primary/90 text-white font-medium rounded-full px-8 py-4"
-                onClick={() => scrollToSection('gallery')}
+                className="shadow-elegant hover:shadow-rose hover:scale-105 transition-all duration-300 group w-full bg-primary hover:bg-primary/90 text-white font-medium rounded-full px-10 py-6 text-lg h-16"
+                onClick={() => scrollToSection('featured')}
               >
-                <span className="mr-2">Unsere Torten entdecken</span>
-                <ChefHat className="h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
+                <span className="mr-3">Unsere Bestseller ansehen</span>
+                <ChefHat className="h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
               </Button>
             </GlareHover>
             <Button 
               variant="outline" 
               size="lg"
-              className="hover:bg-gray-50 hover:text-gray-900 hover:scale-105 transition-all duration-300 group border-gray-300 text-gray-700 rounded-full px-8 py-4 font-medium"
-              onClick={() => scrollToSection('contact')}
+              className="shadow-elegant hover:shadow-rose hover:scale-105 transition-all duration-300 group flex-1 w-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-medium rounded-full px-10 py-6 text-lg h-16"
+              onClick={() => scrollToSection('gallery')}
             >
-              <span className="mr-2">Kontakt aufnehmen</span>
-              <Heart className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+              <span className="mr-3">Galerie durchstöbern</span>
+              <Eye className="h-6 w-6 group-hover:scale-110 transition-transform duration-300" />
             </Button>
           </div>
 
-          {/* Special offer banner */}
-          <div className={`mt-8 p-6 bg-white/80 backdrop-blur-md rounded-2xl border border-gray-200/50 shadow-soft transform transition-all duration-1000 delay-900 ${
+          {/* Special offer banner - Connected to Instagram */}
+          <div className={`mt-8 transform transition-all duration-1000 delay-900 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}>
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-primary font-semibold text-lg">Besondere Aktion!</p>
-                <p className="text-sm text-gray-600 font-light">Bei Bestellung von 3 Torten erhalten Sie 10% Rabatt</p>
+            <a 
+              href="https://instagram.com/torten_welt_r_und_z" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="block p-6 bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-pink-500/10 backdrop-blur-md rounded-2xl border-2 border-pink-300/50 shadow-soft hover:shadow-rose hover:scale-105 transition-all duration-300 group cursor-pointer"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Instagram className="h-6 w-6 text-pink-600 group-hover:scale-110 transition-transform duration-300" />
+                    <p className="text-primary font-semibold text-xl">Besondere Aktion!</p>
+                  </div>
+                  <p className="text-sm text-gray-600 font-light">Bei Bestellung von 3 Torten erhalten Sie 10% Rabatt</p>
+                  <p className="text-xs text-pink-600 font-medium mt-1">📱 Folgen Sie uns auf Instagram für exklusive Angebote!</p>
+                </div>
+                <div className="hidden sm:flex items-center gap-2 px-4 py-2 bg-pink-100 rounded-full group-hover:bg-pink-200 transition-colors duration-300">
+                  <Instagram className="h-4 w-4 text-pink-600" />
+                  <span className="text-sm font-medium text-pink-700">Folgen</span>
+                </div>
               </div>
-              <Button variant="outline" size="sm" className="hidden sm:inline-flex rounded-full border-gray-300 text-gray-700 hover:bg-gray-50 font-medium">
-                Mehr erfahren
-              </Button>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -166,7 +178,7 @@ const Hero = () => {
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <button 
-          onClick={() => scrollToSection('about')}
+          onClick={() => scrollToSection('featured')}
           className="p-3 rounded-full bg-white/80 backdrop-blur-md border border-gray-200/50 hover:bg-white hover:scale-110 transition-all duration-300 shadow-soft"
         >
           <ArrowDown className="h-5 w-5 text-gray-700" />

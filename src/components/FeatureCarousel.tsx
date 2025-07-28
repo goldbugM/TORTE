@@ -96,9 +96,9 @@ const FeatureCarousel: React.FC<FeatureCarouselProps> = ({
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6"
+              className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-8"
             >
-              {React.createElement(items[currentIndex].icon, { className: "h-8 w-8 text-primary" })}
+              {React.createElement(items[currentIndex].icon, { className: "h-10 w-10 text-primary" })}
             </motion.div>
 
             {/* Title */}
@@ -106,7 +106,7 @@ const FeatureCarousel: React.FC<FeatureCarouselProps> = ({
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.5 }}
-              className="text-xl font-bold text-foreground mb-4"
+              className="text-2xl font-bold text-foreground mb-6"
             >
               {items[currentIndex].title}
             </motion.h3>
@@ -116,7 +116,7 @@ const FeatureCarousel: React.FC<FeatureCarouselProps> = ({
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.5 }}
-              className="text-sm text-muted-foreground leading-relaxed"
+              className="text-base text-muted-foreground leading-relaxed"
             >
               {items[currentIndex].description}
             </motion.p>

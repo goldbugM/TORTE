@@ -61,8 +61,8 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gradient-cream">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="bg-gradient-to-br from-pink-50 via-white to-purple-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Header */}
         <div className="text-center mb-16">
           <Badge variant="secondary" className="mb-4 bg-primary/10 text-primary">
@@ -72,7 +72,6 @@ const About = () => {
             Willkommen bei Tortenwelt R&Z
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Seit über einem Jahrzehnt vereinen wir deutsche Konditoreikunst mit authentischen türkischen Spezialitäten. 
             Unsere Leidenschaft für das Backen und die Liebe zum Detail machen jede unserer Kreationen zu etwas Besonderem.
           </p>
         </div>
@@ -121,14 +120,14 @@ const About = () => {
           <div className={`${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`}>
             <div className="flex justify-center">
               <FeatureCarousel 
-                items={features}
-                baseWidth={350}
-                autoplay={true}
-                autoplayDelay={4000}
-                pauseOnHover={true}
-                loop={true}
-                round={false}
-              />
+              items={features}
+              baseWidth={420}
+              autoplay={true}
+              autoplayDelay={4000}
+              pauseOnHover={true}
+              loop={true}
+              round={false}
+            />
             </div>
           </div>
         </div>

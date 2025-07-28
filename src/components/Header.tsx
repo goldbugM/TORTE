@@ -70,16 +70,22 @@ const Header = () => {
               Home
             </button>
             <button 
-              onClick={() => scrollToSection('about')}
+              onClick={() => scrollToSection('featured')}
               className="text-gray-700 hover:text-primary transition-colors duration-200 font-medium text-sm"
             >
-              Über uns
+              Bestseller
             </button>
             <button 
               onClick={() => scrollToSection('gallery')}
               className="text-gray-700 hover:text-primary transition-colors duration-200 font-medium text-sm"
             >
               Galerie
+            </button>
+            <button 
+              onClick={() => scrollToSection('about')}
+              className="text-gray-700 hover:text-primary transition-colors duration-200 font-medium text-sm"
+            >
+              Über uns
             </button>
             <Link 
               to="/torten-konfigurator"
@@ -127,16 +133,22 @@ const Header = () => {
               Home
             </button>
             <button 
-              onClick={() => scrollToSection('about')}
+              onClick={() => scrollToSection('featured')}
               className="block w-full text-left py-3 text-gray-700 hover:text-primary transition-colors duration-200 font-medium"
             >
-              Über uns
+              Bestseller
             </button>
             <button 
               onClick={() => scrollToSection('gallery')}
               className="block w-full text-left py-3 text-gray-700 hover:text-primary transition-colors duration-200 font-medium"
             >
               Galerie
+            </button>
+            <button 
+              onClick={() => scrollToSection('about')}
+              className="block w-full text-left py-3 text-gray-700 hover:text-primary transition-colors duration-200 font-medium"
+            >
+              Über uns
             </button>
             <Link 
               to="/torten-konfigurator"

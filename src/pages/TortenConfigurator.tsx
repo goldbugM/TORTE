@@ -11,13 +11,18 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Checkbox } from '@/components/ui/checkbox';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Separator } from '@/components/ui/separator';
+import { StarBorder } from '@/components/ui/star-border';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { format } from 'date-fns';
+import { de } from 'date-fns/locale';
 import { 
   ChefHat, 
   Cake, 
   Heart, 
   Star, 
   Users, 
-  Calendar, 
+  Calendar as CalendarIcon, 
   Palette, 
   Layers,
   Sparkles,
@@ -186,6 +191,7 @@ interface CakeConfig {
 }
 
 const TortenConfigurator = () => {
+  const isMobile = useIsMobile();
   const [config, setConfig] = useState<CakeConfig>({
     selectedCake: '',
     size: '',
@@ -355,26 +361,58 @@ const TortenConfigurator = () => {
           <div className="space-y-6">
             <div>
               <h3 className="text-xl font-semibold mb-4">Wählen Sie eine Torte aus unserer Galerie</h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {availableCakes.map((cake) => (
-                  <Card 
-                    key={cake.id}
-                    className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
-                      config.selectedCake === cake.id ? 'ring-2 ring-pink-500 bg-pink-50' : ''
-                    }`}
-                    onClick={() => setConfig(prev => ({ ...prev, selectedCake: cake.id }))}
-                  >
-                    <CardContent className="p-4">
-                      <h4 className="font-semibold">{cake.name}</h4>
-                      <p className="text-sm text-muted-foreground mb-2">{cake.description}</p>
-                      <div className="flex justify-between items-center">
-                        <Badge variant="outline">{cake.category}</Badge>
-                        <span className="font-bold text-pink-600">ab {cake.basePrice}€</span>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+              {isMobile ? (
+                <div className="space-y-4">
+                  <Select onValueChange={(value) => setConfig(prev => ({ ...prev, selectedCake: value }))}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Torte auswählen" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {availableCakes.map((cake) => (
+                        <SelectItem key={cake.id} value={cake.id}>
+                          <div className="flex justify-between items-center w-full">
+                            <span>{cake.name}</span>
+                            <span className="text-pink-600 font-semibold ml-2">ab {cake.basePrice}€</span>
+                          </div>
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  {config.selectedCake && (
+                    <Card className="bg-pink-50 border-pink-200">
+                      <CardContent className="p-3">
+                        <h4 className="font-semibold">{availableCakes.find(c => c.id === config.selectedCake)?.name}</h4>
+                        <p className="text-sm text-muted-foreground">{availableCakes.find(c => c.id === config.selectedCake)?.description}</p>
+                        <div className="flex justify-between items-center mt-2">
+                          <Badge variant="outline">{availableCakes.find(c => c.id === config.selectedCake)?.category}</Badge>
+                          <span className="font-bold text-pink-600">ab {availableCakes.find(c => c.id === config.selectedCake)?.basePrice}€</span>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  )}
+                </div>
+              ) : (
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {availableCakes.map((cake) => (
+                    <Card 
+                      key={cake.id}
+                      className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
+                        config.selectedCake === cake.id ? 'ring-2 ring-pink-500 bg-pink-50' : ''
+                      }`}
+                      onClick={() => setConfig(prev => ({ ...prev, selectedCake: cake.id }))}
+                    >
+                      <CardContent className="p-4">
+                        <h4 className="font-semibold">{cake.name}</h4>
+                        <p className="text-sm text-muted-foreground mb-2">{cake.description}</p>
+                        <div className="flex justify-between items-center">
+                          <Badge variant="outline">{cake.category}</Badge>
+                          <span className="font-bold text-pink-600">ab {cake.basePrice}€</span>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         );
@@ -384,23 +422,55 @@ const TortenConfigurator = () => {
           <div className="space-y-6">
             <div>
               <h3 className="text-xl font-semibold mb-4">Tortengröße wählen</h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {sizeOptions.map((size) => (
-                  <Card 
-                    key={size.id}
-                    className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
-                      config.size === size.id ? 'ring-2 ring-pink-500 bg-pink-50' : ''
-                    }`}
-                    onClick={() => setConfig(prev => ({ ...prev, size: size.id }))}
-                  >
-                    <CardContent className="p-4 text-center">
-                      <h4 className="font-semibold">{size.name}</h4>
-                      <p className="text-sm text-muted-foreground">{size.servings}</p>
-                      <Badge variant="secondary" className="mt-2">{size.price}</Badge>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+              {isMobile ? (
+                <div className="space-y-4">
+                  <Select onValueChange={(value) => setConfig(prev => ({ ...prev, size: value }))}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Größe auswählen" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {sizeOptions.map((size) => (
+                        <SelectItem key={size.id} value={size.id}>
+                          <div className="flex justify-between items-center w-full">
+                            <div>
+                              <span className="font-medium">{size.name}</span>
+                              <span className="text-sm text-muted-foreground ml-2">({size.servings})</span>
+                            </div>
+                            <span className="text-pink-600 font-semibold ml-2">{size.price}</span>
+                          </div>
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  {config.size && (
+                    <Card className="bg-pink-50 border-pink-200">
+                      <CardContent className="p-3 text-center">
+                        <h4 className="font-semibold">{sizeOptions.find(s => s.id === config.size)?.name}</h4>
+                        <p className="text-sm text-muted-foreground">{sizeOptions.find(s => s.id === config.size)?.servings}</p>
+                        <Badge variant="secondary" className="mt-2">{sizeOptions.find(s => s.id === config.size)?.price}</Badge>
+                      </CardContent>
+                    </Card>
+                  )}
+                </div>
+              ) : (
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {sizeOptions.map((size) => (
+                    <Card 
+                      key={size.id}
+                      className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
+                        config.size === size.id ? 'ring-2 ring-pink-500 bg-pink-50' : ''
+                      }`}
+                      onClick={() => setConfig(prev => ({ ...prev, size: size.id }))}
+                    >
+                      <CardContent className="p-4 text-center">
+                        <h4 className="font-semibold">{size.name}</h4>
+                        <p className="text-sm text-muted-foreground">{size.servings}</p>
+                        <Badge variant="secondary" className="mt-2">{size.price}</Badge>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div>
@@ -429,22 +499,47 @@ const TortenConfigurator = () => {
 
             <div>
               <h3 className="text-xl font-semibold mb-4">Biskuit Basis</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                {baseTypes.map((base) => (
-                  <Card 
-                    key={base.id}
-                    className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
-                      config.baseType === base.id ? 'ring-2 ring-pink-500 bg-pink-50' : ''
-                    }`}
-                    onClick={() => setConfig(prev => ({ ...prev, baseType: base.id }))}
-                  >
-                    <CardContent className="p-4">
-                      <h4 className="font-semibold">{base.name}</h4>
-                      <p className="text-sm text-muted-foreground">{base.description}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+              {isMobile ? (
+                <div className="space-y-4">
+                  <Select onValueChange={(value) => setConfig(prev => ({ ...prev, baseType: value }))}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Biskuit Basis auswählen" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {baseTypes.map((base) => (
+                        <SelectItem key={base.id} value={base.id}>
+                          {base.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  {config.baseType && (
+                    <Card className="bg-pink-50 border-pink-200">
+                      <CardContent className="p-3">
+                        <h4 className="font-semibold">{baseTypes.find(b => b.id === config.baseType)?.name}</h4>
+                        <p className="text-sm text-muted-foreground">{baseTypes.find(b => b.id === config.baseType)?.description}</p>
+                      </CardContent>
+                    </Card>
+                  )}
+                </div>
+              ) : (
+                <div className="grid md:grid-cols-2 gap-4">
+                  {baseTypes.map((base) => (
+                    <Card 
+                      key={base.id}
+                      className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
+                        config.baseType === base.id ? 'ring-2 ring-pink-500 bg-pink-50' : ''
+                      }`}
+                      onClick={() => setConfig(prev => ({ ...prev, baseType: base.id }))}
+                    >
+                      <CardContent className="p-4">
+                        <h4 className="font-semibold">{base.name}</h4>
+                        <p className="text-sm text-muted-foreground">{base.description}</p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         );
@@ -454,60 +549,150 @@ const TortenConfigurator = () => {
           <div className="space-y-6">
             <div>
               <h3 className="text-xl font-semibold mb-4">Füllungen wählen (mehrere möglich)</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                {fillingOptions.map((filling) => (
-                  <Card 
-                    key={filling.id}
-                    className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
-                      config.filling.includes(filling.id) ? 'ring-2 ring-pink-500 bg-pink-50' : ''
-                    }`}
-                    onClick={() => {
-                      setConfig(prev => ({
-                        ...prev,
-                        filling: prev.filling.includes(filling.id)
-                          ? prev.filling.filter(f => f !== filling.id)
-                          : [...prev.filling, filling.id]
-                      }));
-                    }}
-                  >
-                    <CardContent className="p-4">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h4 className="font-semibold">{filling.name}</h4>
-                          <div className="flex flex-wrap gap-1 mt-2">
-                            {filling.allergens.map((allergen) => (
-                              <Badge key={allergen} variant="destructive" className="text-xs">
-                                {allergen}
-                              </Badge>
-                            ))}
+              {isMobile ? (
+                <div className="space-y-4">
+                  <div className="space-y-3">
+                    {fillingOptions.map((filling) => (
+                      <div key={filling.id} className="flex items-center space-x-3">
+                        <Checkbox
+                          id={`filling-${filling.id}`}
+                          checked={config.filling.includes(filling.id)}
+                          onCheckedChange={(checked) => {
+                            setConfig(prev => ({
+                              ...prev,
+                              filling: checked
+                                ? [...prev.filling, filling.id]
+                                : prev.filling.filter(id => id !== filling.id)
+                            }));
+                          }}
+                        />
+                        <label 
+                          htmlFor={`filling-${filling.id}`}
+                          className="flex-1 cursor-pointer"
+                        >
+                          <div className="flex justify-between items-center">
+                            <div>
+                              <span className="font-medium">{filling.name}</span>
+                              <div className="flex flex-wrap gap-1 mt-1">
+                                {filling.allergens.map((allergen) => (
+                                  <Badge key={allergen} variant="destructive" className="text-xs">
+                                    {allergen}
+                                  </Badge>
+                                ))}
+                              </div>
+                            </div>
+                            <span className="text-sm font-semibold text-pink-600">+8€</span>
                           </div>
-                        </div>
-                        <Badge variant="secondary">+8€</Badge>
+                        </label>
                       </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+                    ))}
+                  </div>
+                  {config.filling.length > 0 && (
+                    <Card>
+                      <CardContent className="p-3">
+                        <h4 className="font-medium mb-2">Ausgewählte Füllungen:</h4>
+                        <div className="space-y-1">
+                          {config.filling.map(fillingId => {
+                            const filling = fillingOptions.find(f => f.id === fillingId);
+                            return filling ? (
+                              <div key={fillingId} className="text-sm">
+                                {filling.name} (+8€)
+                              </div>
+                            ) : null;
+                          })}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  )}
+                </div>
+              ) : (
+                <div className="grid gap-4 md:grid-cols-2">
+                  {fillingOptions.map((filling) => (
+                    <Card 
+                      key={filling.id}
+                      className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
+                        config.filling.includes(filling.id) ? 'ring-2 ring-pink-500 bg-pink-50' : ''
+                      }`}
+                      onClick={() => {
+                        setConfig(prev => ({
+                          ...prev,
+                          filling: prev.filling.includes(filling.id)
+                            ? prev.filling.filter(f => f !== filling.id)
+                            : [...prev.filling, filling.id]
+                        }));
+                      }}
+                    >
+                      <CardContent className="p-4">
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h4 className="font-semibold">{filling.name}</h4>
+                            <div className="flex flex-wrap gap-1 mt-2">
+                              {filling.allergens.map((allergen) => (
+                                <Badge key={allergen} variant="destructive" className="text-xs">
+                                  {allergen}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
+                          <Badge variant="secondary">+8€</Badge>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div>
               <h3 className="text-xl font-semibold mb-4">Frosting/Überzug</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                {frostingOptions.map((frosting) => (
-                  <Card 
-                    key={frosting.id}
-                    className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
-                      config.frosting === frosting.id ? 'ring-2 ring-pink-500 bg-pink-50' : ''
-                    }`}
-                    onClick={() => setConfig(prev => ({ ...prev, frosting: frosting.id }))}
-                  >
-                    <CardContent className="p-4">
-                      <h4 className="font-semibold">{frosting.name}</h4>
-                      <p className="text-sm text-muted-foreground">{frosting.description}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+              {isMobile ? (
+                <div className="space-y-4">
+                  <Select value={config.frosting} onValueChange={(value) => setConfig(prev => ({ ...prev, frosting: value }))}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Frosting auswählen" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {frostingOptions.map((frosting) => (
+                        <SelectItem key={frosting.id} value={frosting.id}>
+                          {frosting.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  {config.frosting && (
+                    <Card>
+                      <CardContent className="p-3">
+                        {(() => {
+                          const selectedFrosting = frostingOptions.find(f => f.id === config.frosting);
+                          return selectedFrosting ? (
+                            <div>
+                              <h4 className="font-medium">{selectedFrosting.name}</h4>
+                              <p className="text-sm text-muted-foreground">{selectedFrosting.description}</p>
+                            </div>
+                          ) : null;
+                        })()}
+                      </CardContent>
+                    </Card>
+                  )}
+                </div>
+              ) : (
+                <div className="grid gap-4 md:grid-cols-2">
+                  {frostingOptions.map((frosting) => (
+                    <Card 
+                      key={frosting.id}
+                      className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
+                        config.frosting === frosting.id ? 'ring-2 ring-pink-500 bg-pink-50' : ''
+                      }`}
+                      onClick={() => setConfig(prev => ({ ...prev, frosting: frosting.id }))}
+                    >
+                      <CardContent className="p-4">
+                        <h4 className="font-semibold">{frosting.name}</h4>
+                        <p className="text-sm text-muted-foreground">{frosting.description}</p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         );
@@ -517,104 +702,243 @@ const TortenConfigurator = () => {
           <div className="space-y-6">
             <div>
               <h3 className="text-xl font-semibold mb-4">Farbe wählen</h3>
-              <div className="grid grid-cols-4 md:grid-cols-8 gap-3">
-                {colorOptions.map((color) => (
-                  <div
-                    key={color.id}
-                    className={`cursor-pointer p-3 rounded-lg border-2 transition-all duration-200 ${
-                      config.color === color.id ? 'border-pink-500 scale-110' : 'border-gray-200'
-                    }`}
-                    onClick={() => {
-                      setConfig(prev => ({
-                        ...prev,
-                        color: color.id
-                      }));
-                    }}
-                  >
-                    <div 
-                      className="w-full h-8 rounded mb-2"
-                      style={{ backgroundColor: color.hex }}
-                    ></div>
-                    <p className="text-xs text-center">{color.name}</p>
-                  </div>
-                ))}
-              </div>
+              {isMobile ? (
+                <div className="space-y-4">
+                  <Select value={config.color} onValueChange={(value) => setConfig(prev => ({ ...prev, color: value }))}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Farbe auswählen" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {colorOptions.map((color) => (
+                        <SelectItem key={color.id} value={color.id}>
+                          {color.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  {config.color && (
+                    <Card>
+                      <CardContent className="p-3">
+                        {(() => {
+                          const selectedColor = colorOptions.find(c => c.id === config.color);
+                          return selectedColor ? (
+                            <div className="flex items-center space-x-3">
+                              <div
+                                className="w-8 h-8 rounded-lg border-2 border-gray-300"
+                                style={{ backgroundColor: selectedColor.hex }}
+                              />
+                              <span className="font-medium">{selectedColor.name}</span>
+                            </div>
+                          ) : null;
+                        })()}
+                      </CardContent>
+                    </Card>
+                  )}
+                </div>
+              ) : (
+                <div className="grid gap-3 grid-cols-4 md:grid-cols-8">
+                  {colorOptions.map((color) => (
+                    <div
+                      key={color.id}
+                      className={`cursor-pointer p-3 rounded-lg border-2 transition-all duration-200 ${
+                        config.color === color.id ? 'border-pink-500 scale-110' : 'border-gray-200'
+                      }`}
+                      onClick={() => {
+                        setConfig(prev => ({
+                          ...prev,
+                          color: color.id
+                        }));
+                      }}
+                    >
+                      <div 
+                        className="w-full h-8 rounded mb-2"
+                        style={{ backgroundColor: color.hex }}
+                      ></div>
+                      <p className="text-xs text-center">{color.name}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div>
               <h3 className="text-xl font-semibold mb-4">Dekorationen (mehrere möglich)</h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {decorationOptions.map((decoration) => (
-                  <Card 
-                    key={decoration.id}
-                    className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
-                      config.decoration.includes(decoration.id) ? 'ring-2 ring-pink-500 bg-pink-50' : ''
-                    }`}
-                    onClick={() => {
-                      setConfig(prev => ({
-                        ...prev,
-                        decoration: prev.decoration.includes(decoration.id)
-                          ? prev.decoration.filter(d => d !== decoration.id)
-                          : [...prev.decoration, decoration.id]
-                      }));
-                    }}
-                  >
-                    <CardContent className="p-4 text-center">
-                      <h4 className="font-semibold">{decoration.name}</h4>
-                      <Badge variant="secondary" className="mt-2">{decoration.price}</Badge>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+              {isMobile ? (
+                <div className="space-y-4">
+                  <div className="space-y-3">
+                    {decorationOptions.map((decoration) => (
+                      <div key={decoration.id} className="flex items-center space-x-3">
+                        <Checkbox
+                          id={`decoration-${decoration.id}`}
+                          checked={config.decoration.includes(decoration.id)}
+                          onCheckedChange={(checked) => {
+                            setConfig(prev => ({
+                              ...prev,
+                              decoration: checked
+                                ? [...prev.decoration, decoration.id]
+                                : prev.decoration.filter(id => id !== decoration.id)
+                            }));
+                          }}
+                        />
+                        <label 
+                          htmlFor={`decoration-${decoration.id}`}
+                          className="flex-1 cursor-pointer"
+                        >
+                          <div className="flex justify-between items-center">
+                            <span className="font-medium">{decoration.name}</span>
+                            <span className="text-sm font-semibold text-pink-600">{decoration.price}</span>
+                          </div>
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                  {config.decoration.length > 0 && (
+                    <Card>
+                      <CardContent className="p-3">
+                        <h4 className="font-medium mb-2">Ausgewählte Dekorationen:</h4>
+                        <div className="space-y-1">
+                          {config.decoration.map(decorationId => {
+                            const decoration = decorationOptions.find(d => d.id === decorationId);
+                            return decoration ? (
+                              <div key={decorationId} className="text-sm">
+                                {decoration.name} ({decoration.price})
+                              </div>
+                            ) : null;
+                          })}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  )}
+                </div>
+              ) : (
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  {decorationOptions.map((decoration) => (
+                    <Card 
+                      key={decoration.id}
+                      className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
+                        config.decoration.includes(decoration.id) ? 'ring-2 ring-pink-500 bg-pink-50' : ''
+                      }`}
+                      onClick={() => {
+                        setConfig(prev => ({
+                          ...prev,
+                          decoration: prev.decoration.includes(decoration.id)
+                            ? prev.decoration.filter(d => d !== decoration.id)
+                            : [...prev.decoration, decoration.id]
+                        }));
+                      }}
+                    >
+                      <CardContent className="p-4 text-center">
+                        <h4 className="font-semibold">{decoration.name}</h4>
+                        <Badge variant="secondary" className="mt-2">{decoration.price}</Badge>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div>
               <h3 className="text-xl font-semibold mb-4">Besondere Anforderungen</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                <Card 
-                  className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
-                    config.glutenFree ? 'ring-2 ring-green-500 bg-green-50' : ''
-                  }`}
-                  onClick={() => {
-                    setConfig(prev => ({
-                      ...prev,
-                      glutenFree: !prev.glutenFree
-                    }));
-                  }}
-                >
-                  <CardContent className="p-4 text-center">
-                    <h4 className="font-semibold">Glutenfrei</h4>
-                    <p className="text-sm text-muted-foreground mt-2">
-                      Torte ohne Gluten (+5€)
-                    </p>
-                    <Badge variant={config.glutenFree ? "default" : "secondary"} className="mt-2">
-                      {config.glutenFree ? "Ausgewählt" : "+5€"}
-                    </Badge>
-                  </CardContent>
-                </Card>
+              {isMobile ? (
+                <div className="space-y-4">
+                  <div className="space-y-3">
+                    <div className="flex items-center space-x-3">
+                      <Checkbox
+                        id="gluten-free"
+                        checked={config.glutenFree}
+                        onCheckedChange={(checked) => {
+                          setConfig(prev => ({
+                            ...prev,
+                            glutenFree: checked
+                          }));
+                        }}
+                      />
+                      <label 
+                        htmlFor="gluten-free"
+                        className="flex-1 cursor-pointer"
+                      >
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <span className="font-medium">Glutenfrei</span>
+                            <p className="text-sm text-muted-foreground">Torte ohne Gluten</p>
+                          </div>
+                          <span className="text-sm font-semibold text-pink-600">+5€</span>
+                        </div>
+                      </label>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <Checkbox
+                        id="lactose-free"
+                        checked={config.lactoseFree}
+                        onCheckedChange={(checked) => {
+                          setConfig(prev => ({
+                            ...prev,
+                            lactoseFree: checked
+                          }));
+                        }}
+                      />
+                      <label 
+                        htmlFor="lactose-free"
+                        className="flex-1 cursor-pointer"
+                      >
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <span className="font-medium">Laktosefrei</span>
+                            <p className="text-sm text-muted-foreground">Torte ohne Laktose</p>
+                          </div>
+                          <span className="text-sm font-semibold text-pink-600">+3€</span>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="grid gap-4 md:grid-cols-2">
+                  <Card 
+                    className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
+                      config.glutenFree ? 'ring-2 ring-green-500 bg-green-50' : ''
+                    }`}
+                    onClick={() => {
+                      setConfig(prev => ({
+                        ...prev,
+                        glutenFree: !prev.glutenFree
+                      }));
+                    }}
+                  >
+                    <CardContent className="p-4 text-center">
+                      <h4 className="font-semibold">Glutenfrei</h4>
+                      <p className="text-sm text-muted-foreground mt-2">
+                        Torte ohne Gluten (+5€)
+                      </p>
+                      <Badge variant={config.glutenFree ? "default" : "secondary"} className="mt-2">
+                        {config.glutenFree ? "Ausgewählt" : "+5€"}
+                      </Badge>
+                    </CardContent>
+                  </Card>
 
-                <Card 
-                  className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
-                    config.lactoseFree ? 'ring-2 ring-blue-500 bg-blue-50' : ''
-                  }`}
-                  onClick={() => {
-                    setConfig(prev => ({
-                      ...prev,
-                      lactoseFree: !prev.lactoseFree
-                    }));
-                  }}
-                >
-                  <CardContent className="p-4 text-center">
-                    <h4 className="font-semibold">Laktosefrei</h4>
-                    <p className="text-sm text-muted-foreground mt-2">
-                      Torte ohne Laktose (+3€)
-                    </p>
-                    <Badge variant={config.lactoseFree ? "default" : "secondary"} className="mt-2">
-                      {config.lactoseFree ? "Ausgewählt" : "+3€"}
-                    </Badge>
-                  </CardContent>
-                </Card>
-              </div>
+                  <Card 
+                    className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
+                      config.lactoseFree ? 'ring-2 ring-blue-500 bg-blue-50' : ''
+                    }`}
+                    onClick={() => {
+                      setConfig(prev => ({
+                        ...prev,
+                        lactoseFree: !prev.lactoseFree
+                      }));
+                    }}
+                  >
+                    <CardContent className="p-4 text-center">
+                      <h4 className="font-semibold">Laktosefrei</h4>
+                      <p className="text-sm text-muted-foreground mt-2">
+                        Torte ohne Laktose (+3€)
+                      </p>
+                      <Badge variant={config.lactoseFree ? "default" : "secondary"} className="mt-2">
+                        {config.lactoseFree ? "Ausgewählt" : "+3€"}
+                      </Badge>
+                    </CardContent>
+                  </Card>
+                </div>
+              )}
             </div>
           </div>
         );
@@ -717,7 +1041,7 @@ const TortenConfigurator = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className={`grid gap-6 ${isMobile ? 'grid-cols-1' : 'md:grid-cols-2'}`}>
                   <div>
                     <h4 className="font-semibold mb-2">Ausgewählte Torte</h4>
                     <p className="font-medium text-pink-600">{availableCakes.find(cake => cake.id === config.selectedCake)?.name || 'Keine Torte ausgewählt'}</p>
@@ -775,7 +1099,7 @@ const TortenConfigurator = () => {
                 
                 <div className="space-y-4">
                   <h4 className="font-semibold text-lg">Kontaktinformationen</h4>
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className={`grid gap-4 ${isMobile ? 'grid-cols-1' : 'md:grid-cols-2'}`}>
                     <div>
                       <Label htmlFor="customerName">Name *</Label>
                       <Input
@@ -853,57 +1177,85 @@ Wir werden uns in Kürze bei Ihnen melden, um die Details zu besprechen.`);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50 py-20">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-purple-50 py-12 md:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`text-center mb-12 transform transition-all duration-1000 ${
+        <div className={`text-center mb-8 md:mb-12 transform transition-all duration-1000 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
         }`}>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h1 className={`font-bold text-foreground mb-4 ${isMobile ? 'text-3xl' : 'text-4xl md:text-5xl'}`}>
             Torten Konfigurator
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className={`text-muted-foreground max-w-2xl mx-auto ${isMobile ? 'text-base px-4' : 'text-lg'}`}>
             Gestalten Sie Ihre Traumtorte nach Ihren Wünschen. Jede Torte wird individuell für Sie gefertigt.
           </p>
         </div>
 
         <div className="max-w-6xl mx-auto">
           {/* Progress Steps */}
-          <div className="mb-8">
-            <div className="flex justify-between items-center">
-              {steps.map((step, index) => (
-                <div key={step.id} className="flex flex-col items-center">
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
-                    currentStep >= index 
-                      ? 'bg-pink-500 text-white' 
-                      : 'bg-gray-200 text-gray-500'
-                  }`}>
-                    <step.icon className="h-6 w-6" />
+          <div className="mb-6 md:mb-8">
+            {isMobile ? (
+              // Mobile: Horizontal scrollable steps
+              <div className="flex overflow-x-auto pb-4 space-x-4">
+                {steps.map((step, index) => (
+                  <div key={step.id} className="flex flex-col items-center min-w-[80px]">
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                      currentStep >= index 
+                        ? 'bg-pink-500 text-white' 
+                        : 'bg-gray-200 text-gray-500'
+                    }`}>
+                      <step.icon className="h-5 w-5" />
+                    </div>
+                    <span className="text-xs mt-2 text-center leading-tight">{step.title}</span>
                   </div>
-                  <span className="text-sm mt-2 text-center">{step.title}</span>
-                  {index < steps.length - 1 && (
-                    <div className={`h-1 w-full mt-4 transition-all duration-300 ${
-                      currentStep > index ? 'bg-pink-500' : 'bg-gray-200'
-                    }`} />
-                  )}
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            ) : (
+              // Desktop: Original layout
+              <div className="flex justify-between items-center">
+                {steps.map((step, index) => (
+                  <div key={step.id} className="flex flex-col items-center">
+                    <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
+                      currentStep >= index 
+                        ? 'bg-pink-500 text-white' 
+                        : 'bg-gray-200 text-gray-500'
+                    }`}>
+                      <step.icon className="h-6 w-6" />
+                    </div>
+                    <span className="text-sm mt-2 text-center">{step.title}</span>
+                    {index < steps.length - 1 && (
+                      <div className={`h-1 w-full mt-4 transition-all duration-300 ${
+                        currentStep > index ? 'bg-pink-500' : 'bg-gray-200'
+                      }`} />
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Main Content */}
-          <Card className="mb-8">
-            <CardContent className="p-8">
-              {renderStepContent()}
-            </CardContent>
-          </Card>
+          <StarBorder 
+            as="div" 
+            color="rgb(236, 72, 153)" 
+            speed="6s" 
+            thickness={3}
+            className="rounded-lg mb-6 md:mb-8"
+          >
+            <Card className="border-0">
+              <CardContent className={`${isMobile ? 'p-4' : 'p-8'}`}>
+                {renderStepContent()}
+              </CardContent>
+            </Card>
+          </StarBorder>
 
           {/* Navigation & Price */}
-          <div className="flex justify-between items-center">
-            <div className="flex space-x-4">
+          <div className={`${isMobile ? 'flex flex-col space-y-4' : 'flex justify-between items-center'}`}>
+            <div className={`flex ${isMobile ? 'justify-between' : 'space-x-4'}`}>
               <Button 
                 variant="outline" 
                 onClick={() => setCurrentStep(Math.max(0, currentStep - 1))}
                 disabled={currentStep === 0}
+                className={isMobile ? 'flex-1 mr-2' : ''}
               >
                 Zurück
               </Button>
@@ -918,23 +1270,24 @@ Wir werden uns in Kürze bei Ihnen melden, um die Details zu besprechen.`);
                     (currentStep === 3 && !config.color) ||
                     (currentStep === 4 && !config.delivery)
                   }
+                  className={isMobile ? 'flex-1 ml-2' : ''}
                 >
                   Weiter
                 </Button>
               ) : (
                 <Button 
                   onClick={scrollToContact}
-                  className="bg-pink-500 hover:bg-pink-600"
+                  className={`bg-pink-500 hover:bg-pink-600 ${isMobile ? 'flex-1 ml-2' : ''}`}
                   disabled={!isOrderValid()}
                 >
                   <ShoppingCart className="h-4 w-4 mr-2" />
-                  Jetzt bestellen
+                  {isMobile ? 'Bestellen' : 'Jetzt bestellen'}
                 </Button>
               )}
             </div>
 
-            <div className="text-right">
-              <div className="text-2xl font-bold text-pink-600">
+            <div className={`${isMobile ? 'text-center' : 'text-right'}`}>
+              <div className={`font-bold text-pink-600 ${isMobile ? 'text-xl' : 'text-2xl'}`}>
                 {config.price}€
               </div>
               <p className="text-sm text-muted-foreground">
