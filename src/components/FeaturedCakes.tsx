@@ -1,18 +1,18 @@
 import BounceCards from "@/components/ui/BounceCards";
 import { Button } from "@/components/ui/button";
-import chocolateTorte from "@/assets/chocolate-torte.jpg";
-import blackForestCake from "@/assets/black-forest-cake.jpg";
-import weddingCake from "@/assets/wedding-cake.jpg";
-import fruitCake from "@/assets/fruit-cake.jpg";
-import kasekuchen from "@/assets/kasekuchen.jpg";
+import card1 from "@/assets/carousel and cards/1.jpg";
+import card2 from "@/assets/carousel and cards/2.jpg";
+import card3 from "@/assets/carousel and cards/3.jpg";
+import card4 from "@/assets/carousel and cards/4.jpg";
+import card5 from "@/assets/carousel and cards/5.jpg";
 
 const FeaturedCakes = () => {
   const featuredImages = [
-    chocolateTorte,
-    blackForestCake,
-    weddingCake,
-    fruitCake,
-    kasekuchen
+    card1,
+    card2,
+    card3,
+    card4,
+    card5
   ];
 
   const scrollToGallery = () => {

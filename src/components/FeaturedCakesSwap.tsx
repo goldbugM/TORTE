@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import CardSwap, { Card } from "./ui/CardSwap";
-import chocolateTorte from "@/assets/chocolate-torte.jpg";
-import blackForestCake from "@/assets/black-forest-cake.jpg";
-import fruitCake from "@/assets/fruit-cake.jpg";
-import weddingCake from "@/assets/wedding-cake.jpg";
-import kasekuchen from "@/assets/kasekuchen.jpg";
+import card6 from "@/assets/carousel and cards/6.jpg";
+import card7 from "@/assets/carousel and cards/7.jpg";
+import card8 from "@/assets/carousel and cards/8.jpg";
+import card9 from "@/assets/carousel and cards/9.jpg";
+import card10 from "@/assets/carousel and cards/10.jpg";
+import card11 from "@/assets/carousel and cards/11.jpg";
 
 const FeaturedCakesSwap = () => {
   const navigate = useNavigate();
@@ -17,43 +18,45 @@ const FeaturedCakesSwap = () => {
   const featuredCakes = [
     {
       id: 1,
-      name: "Schokoladen Torte",
-      description: "Reichhaltige Schokoladentorte mit cremiger Ganache",
-      image: chocolateTorte,
-      price: "€45",
+      name: "Lotus Biscoff Cheesecake",
+      description: "Karamell-Käsekuchen mit Biscoff-Keksen und Streuseln",
+      image: card6,
       badge: "Bestseller"
     },
     {
       id: 2,
-      name: "Schwarzwälder Kirschtorte",
-      description: "Klassische deutsche Torte mit Kirschen und Sahne",
-      image: blackForestCake,
-      price: "€52",
-      badge: "Traditionell"
+      name: "Schmetterlings-Sahnetorte",
+      description: "Gelbe Buttercreme-Torte mit Schmetterlingen und rosa Blüten",
+      image: card7,
+      badge: "Elegant"
     },
     {
       id: 3,
-      name: "Obsttorte",
-      description: "Frische saisonale Früchte auf Biskuitboden",
-      image: fruitCake,
-      price: "€38",
-      badge: "Saisonal"
+      name: "Drip Cake zum 7. Geburtstag",
+      description: "Torte mit rosa Glasur-Tropfen und weißen Kugeln",
+      image: card8,
+      badge: "Geburtstag"
     },
     {
       id: 4,
-      name: "Hochzeitstorte",
-      description: "Elegante mehrstöckige Torte für besondere Anlässe",
-      image: weddingCake,
-      price: "€180",
-      badge: "Premium"
+      name: "Safari-Geburtstagstorte",
+      description: "Dschungel-Thema mit Zebra, Gepard und Nilpferd",
+      image: card9,
+      badge: "Kinder"
     },
     {
       id: 5,
-      name: "Käsekuchen",
-      description: "Cremiger New York Style Cheesecake",
-      image: kasekuchen,
-      price: "€35",
-      badge: "Klassiker"
+      name: "Obstkuchen/Fruchttorte",
+      description: "Zweistöckige Torte aus frischen Früchten (Wassermelone, Trauben, etc.)",
+      image: card10,
+      badge: "Gesund"
+    },
+    {
+      id: 6,
+      name: "Twenty One Geburtstagstorte",
+      description: "Grün-weiße Torte mit rosa Bändern zum 21. Geburtstag",
+      image: card11,
+      badge: "Geburtstag"
     }
   ];
 
@@ -155,9 +158,7 @@ const FeaturedCakesSwap = () => {
                         <div className={`absolute top-3 left-3 px-2 py-1 ${getBadgeColor(cake.badge)} text-white text-xs font-semibold rounded-full`}>
                           {cake.badge}
                         </div>
-                        <div className="absolute top-3 right-3 bg-white px-2 py-1 rounded-full shadow-md">
-                          <span className="text-pink-600 font-bold text-xs">{cake.price}</span>
-                        </div>
+
                       </div>
                       
                       <div className="p-4">
@@ -222,9 +223,7 @@ const FeaturedCakesSwap = () => {
                         <div className={`absolute top-4 left-4 px-3 py-1 ${getBadgeColor(cake.badge)} text-white text-xs font-semibold rounded-full`}>
                           {cake.badge}
                         </div>
-                        <div className="absolute top-4 right-4 bg-white px-3 py-1 rounded-full shadow-md">
-                          <span className="text-pink-600 font-bold text-sm">{cake.price}</span>
-                        </div>
+
                       </div>
                       
                       <div className="p-6">

@@ -108,7 +108,7 @@ const Contact = () => {
                       className="h-12 shadow-soft hover:shadow-elegant transition-all duration-300 hover:-translate-y-1"
                     >
                       <a 
-                        href="https://wa.me/49123456789" 
+                        href="https://wa.me/4969123456789"
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="flex items-center justify-center gap-2"

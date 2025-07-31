@@ -2,12 +2,12 @@ import { Button } from "@/components/ui/button";
 import GlareHover from "@/components/ui/GlareHover";
 import { useState, useEffect } from "react";
 import { ChefHat, Heart, Star, ArrowDown, Eye, Instagram } from "lucide-react";
-import heroImage from "@/assets/hero-cakes.jpg";
-import blackForestCake from "@/assets/black-forest-cake.jpg";
-import chocolateTorte from "@/assets/chocolate-torte.jpg";
-import fruitCake from "@/assets/fruit-cake.jpg";
-import weddingCake from "@/assets/wedding-cake.jpg";
-import kasekuchen from "@/assets/kasekuchen.jpg";
+import carousel1 from "@/assets/carousel and cards/1.jpg";
+import carousel2 from "@/assets/carousel and cards/2.jpg";
+import carousel3 from "@/assets/carousel and cards/3.jpg";
+import carousel4 from "@/assets/carousel and cards/4.jpg";
+import carousel5 from "@/assets/carousel and cards/5.jpg";
+import carousel6 from "@/assets/carousel and cards/6.jpg";
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,12 +15,12 @@ const Hero = () => {
 
   // Carousel images array
   const carouselImages = [
-    heroImage,
-    blackForestCake,
-    chocolateTorte,
-    fruitCake,
-    weddingCake,
-    kasekuchen
+    carousel1,
+    carousel2,
+    carousel3,
+    carousel4,
+    carousel5,
+    carousel6
   ];
 
   useEffect(() => {
@@ -44,18 +44,20 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+    <section id="home" className="relative min-h-screen w-full flex items-center overflow-hidden">
       {/* Carousel Background */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 w-full h-full">
         {carouselImages.map((image, index) => (
           <div
             key={index}
-            className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 ${
-              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            className={`absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
+              index === currentImageIndex
+                ? 'opacity-100 carousel-active'
+                : 'opacity-0'
             }`}
             style={{ backgroundImage: `url(${image})` }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-background/50 to-background/30"></div>
+
           </div>
         ))}
       </div>
@@ -154,7 +156,7 @@ const Hero = () => {
               href="https://instagram.com/torten_welt_r_und_z" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="block p-6 bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-pink-500/10 backdrop-blur-md rounded-2xl border-2 border-pink-300/50 shadow-soft hover:shadow-rose hover:scale-105 transition-all duration-300 group cursor-pointer"
+              className="block p-6 bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-pink-500/10 rounded-2xl border-2 border-pink-300/50 shadow-soft hover:shadow-rose hover:scale-105 transition-all duration-300 group cursor-pointer"
             >
               <div className="flex items-center justify-between">
                 <div className="flex-1">
@@ -179,7 +181,7 @@ const Hero = () => {
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <button 
           onClick={() => scrollToSection('featured')}
-          className="p-3 rounded-full bg-white/80 backdrop-blur-md border border-gray-200/50 hover:bg-white hover:scale-110 transition-all duration-300 shadow-soft"
+          className="p-3 rounded-full bg-white/80 border border-gray-200/50 hover:bg-white hover:scale-110 transition-all duration-300 shadow-soft"
         >
           <ArrowDown className="h-5 w-5 text-gray-700" />
         </button>

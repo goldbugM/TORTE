@@ -37,11 +37,11 @@ const Header = () => {
             <div className="flex items-center space-x-6">
               <div className="flex items-center space-x-2 text-gray-600">
                 <Phone className="h-3 w-3" />
-                <span className="font-light">+49 123 456 789</span>
+                <span className="font-light">+49 69 123 456 789</span>
               </div>
               <div className="flex items-center space-x-2 text-gray-600">
                 <MapPin className="h-3 w-3" />
-                <span className="font-light">Musterstraße 123, 12345 Musterstadt</span>
+                <span className="font-light">Frankfurt am Main</span>
               </div>
             </div>
 

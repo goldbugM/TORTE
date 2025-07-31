@@ -1,0 +1,284 @@
+# AI IMAGE GENERATION PROMPTS FOR TORTENWELT R&Z WEBSITE
+# Enhanced with Advanced Techniques for FluxDev and Imagen
+# Optimized for Professional Food Photography and Bakery Imagery
+
+## TECHNICAL SPECIFICATIONS
+# Hero Images: 1920x1080px (16:9 aspect ratio)
+# Product Images: 800x600px (4:3 aspect ratio)
+# Camera Settings: f/2.8-f/8, ISO 100-400, 1/125s-1/250s
+# Lighting: Natural daylight, studio lighting, golden hour
+# Style: Photorealistic, commercial quality, high dynamic range
+
+## HERO IMAGES (1920x1080px)
+# Main carousel background images with cinematic quality
+
+### Hero Image 1 - Premium Bakery Showcase
+"Professional food photography of an elegant German patisserie display, shot with Canon EOS R5, 24-70mm lens at f/4, ISO 200, 1/160s. Multiple artisanal cakes and pastries arranged on white marble counters with glass display cases. Warm golden hour lighting streaming through large windows, creating soft shadows and highlights. Shallow depth of field focusing on foreground cakes with blurred bakery interior background. High-end atmosphere with wooden accents, fresh flowers, and vintage brass fixtures. 16:9 aspect ratio, 1920x1080px, photorealistic rendering, commercial quality, cinematic color grading with warm tones, high dynamic range"
+
+### Hero Image 2 - Chocolate Artistry Focus
+"Luxurious chocolate cake showcase photographed with macro lens (100mm f/2.8), ISO 100, 1/125s, featuring multiple chocolate tortes with glossy ganache dripping elegantly. Dark chocolate shavings and cocoa powder dusting on black marble surface. Dramatic studio lighting with key light at 45 degrees, creating rich shadows and golden highlights. Background features blurred chocolate-making tools and ingredients. Ultra-realistic textures showing every detail of the ganache surface. Professional food styling with geometric precision. Color palette: deep browns, rich golds, warm blacks. 16:9 aspect ratio, 1920x1080px, photorealistic style, high dynamic range, HDR processing"
+
+### Hero Image 3 - Wedding Elegance
+"Elegant multi-tier wedding cake display in bright, airy modern bakery. Shot with 85mm portrait lens at f/1.8, ISO 100, 1/200s for creamy bokeh. Three-tier white fondant cake with delicate sugar flowers and pearl details on crystal cake stand. Soft natural lighting from north-facing windows, supplemented by fill flash. Background shows blurred bakery interior with white subway tiles and hanging plants. Romantic atmosphere with scattered rose petals and vintage lace. Color palette: pure whites, soft pastels, warm creams. 16:9 aspect ratio, 1920x1080px, professional bridal photography style, photorealistic style, high dynamic range"
+
+### Hero Image 4 - Fresh Berry Celebration
+"Vibrant fruit cake display featuring seasonal berries and cream layers. Photographed with 50mm lens at f/5.6, ISO 100, 1/250s for optimal sharpness. Multiple cakes with fresh strawberries, blueberries, and raspberries arranged on rustic wooden boards. Natural daylight photography during golden hour, creating warm, inviting atmosphere. Clean Scandinavian-style bakery environment with white walls and natural wood accents. Shallow depth of field highlighting foreground cakes. Color palette: vibrant reds, deep blues, fresh greens, cream whites. Food styling emphasizing natural, organic presentation. 16:9 aspect ratio, 1920x1080px, photorealistic style, high dynamic range, high saturation"
+
+### Hero Image 5 - Traditional German Heritage
+"Authentic German bakery interior showcasing traditional cakes: Schwarzwälder Kirschtorte, Käsekuchen, and Apfelstrudel. Shot with wide-angle lens (24mm) at f/8, ISO 200, 1/125s for environmental context. Warm, cozy atmosphere with wooden shelves, checkered tablecloths, and copper baking molds. Traditional German bakery setting with vintage scales and handwritten menu boards. Soft tungsten lighting creating golden, nostalgic mood. Steam rising from fresh-baked goods. Cultural authenticity with traditional German decorative elements. 16:9 aspect ratio, 1920x1080px, photorealistic style, high dynamic range, film photography aesthetic"
+
+### Hero Image 6 - Modern Minimalist Showcase
+"Contemporary bakery interior with clean, minimalist design. Architectural photography using 16-35mm ultra-wide lens at f/11, ISO 100, 1/160s. Glass display cases with LED lighting showcasing modern cake designs. Scandinavian-inspired aesthetic with white walls, concrete floors, and natural wood accents. Bright, even lighting from skylights and track lighting. Geometric composition emphasizing clean lines and negative space. Color palette: whites, grays, natural wood tones, subtle pastels. 16:9 aspect ratio, 1920x1080px, professional architectural photography style, photorealistic style, high dynamic range, high contrast"
+
+## PRODUCT IMAGES (800x600px)
+# Individual cake and pastry images with studio-quality lighting and composition
+
+### German Traditional Cakes
+
+#### Schwarzwälder Kirschtorte (Black Forest Cake)
+"Professional food photography of authentic German Black Forest cake slice, shot with Canon 100mm macro lens at f/4, ISO 100, 1/125s. Three distinct layers of chocolate sponge cake with whipped cream and fresh cherries visible in cross-section. Dark chocolate shavings cascading over white cream, maraschino cherry on top. Placed on elegant white porcelain plate with subtle rim detail. Studio lighting setup: key light at 45 degrees with softbox, fill light at 15% power, rim light for separation. Clean white seamless background with subtle gradient. Ultra-sharp focus on cake texture, creamy bokeh background. Color palette: rich chocolate browns, pure whites, vibrant cherry reds. 4:3 aspect ratio, 800x600px, commercial food photography quality, photorealistic style, high dynamic range"
+
+#### Käsekuchen (German Cheesecake)
+"Classic German-style cheesecake photographed with 85mm lens at f/5.6, ISO 100, 1/160s. Golden-brown top with characteristic cracks, creamy quark filling visible, graham cracker crust base. Shot from 45-degree angle on rustic wooden board with vintage cake server. Natural window lighting with white foam core reflector for fill. Shallow depth of field with background showing blurred baking ingredients (eggs, flour, vanilla). Warm color temperature (3200K) creating cozy, homemade atmosphere. Texture emphasis on smooth, dense cheesecake surface. 4:3 aspect ratio, 800x600px, lifestyle food photography, photorealistic style, high dynamic range"
+
+#### Apfelstrudel (Apple Strudel)
+"Traditional German apple strudel slice with flaky phyllo pastry layers, photographed with 50mm lens at f/8, ISO 200, 1/125s for maximum sharpness. Visible apple filling with cinnamon and raisins, golden-brown pastry with visible layers. Dusted with powdered sugar, served with vanilla sauce drizzle. Rustic presentation on dark slate plate with vintage silver fork. Warm tungsten lighting (2800K) creating golden, cozy atmosphere. Background shows blurred apples and cinnamon sticks. Steam effect rising from warm strudel. 4:3 aspect ratio, 800x600px, artisanal food styling, photorealistic style, high dynamic range"
+
+### Premium Chocolate Creations
+
+#### Schokoladentorte (Chocolate Torte)
+"Decadent German chocolate torte with multiple layers and glossy ganache, photographed with 100mm macro lens at f/2.8, ISO 100, 1/125s. Rich, dense chocolate cake with mirror-like ganache surface reflecting studio lights. Garnished with tempered chocolate decorations and gold leaf. Dramatic lighting with key light at 60 degrees creating strong shadows and highlights. Black marble surface with scattered cocoa powder and chocolate shavings. Background shows blurred luxury chocolate-making tools and ingredients. Color palette: deep chocolate browns, rich golds, dramatic blacks. Luxury pastry presentation with artistic plating. 4:3 aspect ratio, 800x600px, fine dining photography, photorealistic style, high dynamic range"
+
+#### Mousse au Chocolat Torte
+"Elegant chocolate mousse cake with airy texture and chocolate curls, photographed with 85mm lens at f/4, ISO 100, 1/160s. Light, fluffy mousse layers visible in cross-section with delicate chocolate sponge base. Garnished with chocolate curls and raspberry coulis drizzle. Soft, romantic lighting with large softbox and white reflector. Fine bone china plate on white linen with silver dessert spoon. Background features blurred French patisserie elements and fresh berries. Color palette: milk chocolate browns, cream whites, vibrant berry reds. French pastry styling with elegant presentation. 4:3 aspect ratio, 800x600px, elegant dessert photography, photorealistic style, high dynamic range"
+
+#### Brownie Torte Supreme
+"Rich brownie-based torte with fudgy texture and chocolate chips, photographed with 50mm lens at f/5.6, ISO 200, 1/125s. Dense, moist brownie layers with visible chocolate chunks and nuts. Topped with chocolate ganache drip and crushed walnuts. Warm studio lighting creating cozy, indulgent atmosphere. Rustic wooden board with vintage ice cream scoop and fresh walnuts. Background shows blurred American bakery setting with chocolate ingredients. Color palette: deep browns, warm golds, rich textures. Comfort food styling with generous portions. 4:3 aspect ratio, 800x600px, comfort food photography, photorealistic style, high dynamic range"
+
+#### White Chocolate Raspberry Torte
+"Elegant white chocolate torte with fresh raspberry layers, photographed with 85mm lens at f/4, ISO 100, 1/160s. Pristine white chocolate mousse with bright red raspberry compote swirls. Garnished with fresh raspberries and white chocolate shavings. Clean, bright lighting with multiple fill lights for even illumination. Modern white ceramic plate on marble surface with scattered raspberries. Background features soft-focused white and pink elements. Color palette: pure whites, vibrant raspberry reds, soft pinks. Modern pastry styling with clean presentation. 4:3 aspect ratio, 800x600px, contemporary dessert photography, photorealistic style, high dynamic range"
+
+### Elegant Cream Cakes
+
+#### Buttercreme Torte (Classic Buttercream)
+"Classic buttercream cake with pristine white frosting, photographed with 100mm macro lens at f/5.6, ISO 100, 1/160s. Perfect piping work with rosettes and decorative borders visible in sharp detail. Shot from slight overhead angle on fine bone china plate. Soft, even lighting from large softbox creating minimal shadows. Clean, minimalist composition with negative space. Background: pure white seamless with subtle texture. Professional cake decorating quality with geometric precision. Color palette: pure whites with warm undertones. 4:3 aspect ratio, 800x600px, commercial bakery photography, photorealistic style, high dynamic range"
+
+#### Mascarpone-Frischkäse-Sahne Torte
+"Elegant cream cake with mascarpone and cream cheese layers, light and airy appearance. Photographed with 50mm lens at f/4, ISO 100, 1/125s. Delicate piping work and fresh berry garnish. Soft natural lighting from north-facing window with white reflector fill. Marble surface with subtle veining. Background shows blurred fresh berries and mint leaves. Romantic, sophisticated presentation. Color palette: cream whites, soft pastels, fresh berry colors. 4:3 aspect ratio, 800x600px, luxury dessert photography, photorealistic style, high dynamic range"
+
+#### Fruchtige Sahnetorte (Fresh Berry Cream)
+"Fresh berry cream cake with seasonal fruits and whipped cream. Shot with 85mm lens at f/2.8, ISO 100, 1/200s for creamy bokeh. Multiple berry varieties: strawberries, blueberries, raspberries arranged artistically. Natural daylight photography with golden hour warmth. Rustic wooden cake stand with vintage lace doily. Background shows blurred garden setting with soft green bokeh. Fresh, organic styling emphasizing natural beauty. High saturation to enhance berry colors. 4:3 aspect ratio, 800x600px, natural food photography, photorealistic style, high dynamic range"
+
+### Modern & Specialty Designs
+
+#### Naked Cake (Rustic Style)
+"Trendy naked cake with exposed layers and minimal frosting, photographed with 50mm lens at f/4, ISO 100, 1/160s. Visible sponge layers with cream between, decorated with fresh flowers and berries. Natural, organic presentation on wooden cake stand. Soft natural lighting from large window with sheer curtains. Rustic wooden table with scattered flowers and vintage cake server. Background shows blurred garden party setting with bokeh lights. Color palette: natural cake tones, vibrant flower colors, warm woods. Bohemian wedding styling with organic elements. 4:3 aspect ratio, 800x600px, lifestyle photography, photorealistic style, high dynamic range"
+
+#### Drip Cake (Modern Trend)
+"Contemporary drip cake with colorful ganache drips and decorative toppings, photographed with 85mm lens at f/5.6, ISO 100, 1/125s. Chocolate or caramel drips cascading down white frosting with macarons and candy decorations. Modern presentation on acrylic cake stand with LED lighting. Bright, even studio lighting with colored gels for dynamic effect. Clean white background with geometric props. Background features modern bakery elements and colorful confections. Color palette: bright, saturated colors with white base. Contemporary celebration styling. 4:3 aspect ratio, 800x600px, modern food photography, photorealistic style, high dynamic range"
+
+#### Geburtstagstorte (Birthday Cake)
+"Festive birthday cake with colorful decorations and candles, photographed with 50mm lens at f/8, ISO 200, 1/160s. Multi-colored frosting with piped decorations, rainbow sprinkles, and lit birthday candles. Celebration atmosphere with party decorations. Warm, joyful lighting with practical candle light and studio fill. Colorful party table setting with confetti and balloons. Background shows blurred birthday party atmosphere with warm bokeh. Color palette: bright rainbow colors, warm candle glow, festive tones. Party celebration styling with joyful energy. 4:3 aspect ratio, 800x600px, celebration photography, photorealistic style, high dynamic range"
+
+### Healthy & Alternative Options
+
+#### Wassermelonen Torte (Watermelon Cake)
+"Creative healthy dessert made entirely from fresh watermelon layers, photographed with 85mm lens at f/4. Stacked watermelon rounds with coconut cream between layers, fresh mint garnish and berry decoration. Natural outdoor lighting during golden hour. Rustic wooden surface with scattered fresh fruits. Clean, healthy lifestyle aesthetic. Vibrant color palette: deep watermelon reds, fresh greens, pure whites. Background shows blurred summer garden setting. Health-conscious food styling emphasizing natural beauty. 800x600, lifestyle food photography"
+
+#### San Sebastian Cheesecake
+"Basque-style burnt cheesecake with characteristic caramelized top, photographed with 100mm macro lens at f/2.8. Deep golden-brown surface with rustic, imperfect edges. Shot from 45-degree angle showing creamy interior texture. Warm tungsten lighting (2800K) emphasizing golden tones. Dark slate surface with scattered vanilla beans. Background shows blurred Basque countryside elements. Artisanal, rustic presentation style. Color palette: deep golds, warm browns, cream whites. 800x600, artisanal dessert photography"
+
+### Turkish Specialties & Mediterranean Delights
+
+#### Baklava (Traditional Layers)
+"Authentic Turkish baklava with visible phyllo pastry layers, photographed with 100mm macro lens at f/5.6. Golden honey-soaked pastry with chopped pistachios and walnuts. Extreme detail showing paper-thin pastry layers. Warm studio lighting with honey-colored gels. Traditional copper tray with ornate patterns. Background shows blurred Middle Eastern spices and nuts. Cultural authenticity with traditional Turkish elements. Color palette: golden honey tones, rich browns, green pistachios. 800x600, cultural food photography"
+
+#### Künefe (Cheese Dessert)
+"Traditional Turkish künefe with shredded kadayıf pastry and melted cheese, photographed with 50mm lens at f/4. Golden crispy top with visible cheese stretching. Served in traditional copper pan with simple syrup drizzle. Warm tungsten lighting creating golden atmosphere. Background shows blurred Turkish tea glasses and traditional elements. Steam rising from hot dessert. Authentic Middle Eastern presentation. 800x600, traditional cuisine photography"
+
+#### Lokum (Turkish Delight)
+"Colorful Turkish delight pieces dusted with powdered sugar, photographed with 100mm macro lens at f/8 for maximum sharpness. Various flavors: rose, lemon, pomegranate arranged on ornate silver tray. Soft, even lighting from large softbox. Traditional Turkish patterns in background. Extreme detail showing gel-like texture and sugar coating. Color palette: soft pastels, pure whites, metallic silvers. 800x600, luxury confectionery photography"
+
+#### Sütlaç (Rice Pudding)
+"Traditional Turkish rice pudding in individual ceramic bowls, photographed with 85mm lens at f/4. Creamy white pudding with cinnamon dusting and caramelized top. Warm, cozy lighting with golden undertones. Traditional Turkish ceramic bowls with blue patterns. Background shows blurred Turkish coffee and traditional elements. Comfort food styling emphasizing homemade quality. 800x600, traditional dessert photography"
+
+#### Muhallebi (Milk Pudding)
+"Elegant Turkish milk pudding with smooth, silky texture, photographed with 100mm macro lens at f/5.6. Garnished with chopped pistachios and rose petals. Served in fine porcelain bowls with gold rim. Soft, romantic lighting creating dreamy atmosphere. Background shows blurred rose petals and traditional Turkish elements. Luxury presentation style. Color palette: pure whites, soft pinks, gold accents. 800x600, elegant dessert photography"
+
+#### Revani (Semolina Cake)
+"Traditional Turkish semolina cake soaked in syrup, photographed with 50mm lens at f/4. Golden-yellow cake with visible semolina texture, garnished with sliced almonds. Warm lighting emphasizing golden color. Traditional serving plate with geometric patterns. Background shows blurred Middle Eastern spices and nuts. Authentic cultural presentation. 800x600, traditional cake photography"
+
+### Savory Turkish Specialties
+
+#### Börek (Layered Pastry)
+"Turkish börek with flaky phyllo pastry layers, photographed with 85mm lens at f/5.6. Golden-brown surface with visible layers, cheese and spinach filling. Shot from 45-degree angle showing cross-section. Warm natural lighting from window. Rustic wooden cutting board with traditional knife. Background shows blurred Turkish kitchen elements. Authentic, homemade presentation style. 800x600, savory pastry photography"
+
+#### Pide (Turkish Flatbread)
+"Traditional Turkish pide with boat-shaped form, photographed with 50mm lens at f/8. Golden crust with cheese and egg topping, fresh herbs garnish. Overhead shot showing characteristic shape. Natural daylight with warm color temperature. Wooden serving board with traditional Turkish elements. Background shows blurred Turkish spices and ingredients. Authentic cultural presentation. 800x600, traditional bread photography"
+
+#### Lahmacun (Turkish Pizza)
+"Thin-crust lahmacun with spiced meat topping, photographed with 85mm lens at f/4. Crispy edges with visible meat and herb mixture. Fresh parsley and lemon wedge garnish. Warm lighting emphasizing golden crust. Traditional copper serving tray. Background shows blurred Turkish kitchen scene. Authentic street food presentation. 800x600, cultural cuisine photography"
+
+#### Mantı (Turkish Dumplings)
+"Traditional Turkish mantı dumplings with yogurt sauce, photographed with 100mm macro lens at f/4. Small dumplings arranged in bowl with garlic yogurt and paprika oil drizzle. Steam rising from hot dish. Warm, cozy lighting. Traditional ceramic bowl with Turkish patterns. Background shows blurred Turkish spices and herbs. Comfort food styling. 800x600, traditional dumpling photography"
+
+#### Menemen (Turkish Scrambled Eggs)
+"Traditional Turkish menemen in cast iron pan, photographed with 50mm lens at f/5.6. Scrambled eggs with tomatoes and peppers, fresh herbs on top. Rustic presentation in traditional copper pan. Natural lighting with warm undertones. Background shows blurred Turkish breakfast elements. Authentic, homestyle cooking presentation. 800x600, traditional breakfast photography"
+
+#### Sigara Böreği (Cigarette Börek)
+"Crispy Turkish cigarette börek rolls, photographed with 85mm lens at f/4. Golden-brown phyllo pastry with cheese filling visible at ends. Arranged on traditional serving plate with fresh herbs. Warm studio lighting creating golden highlights. Background shows blurred Turkish tea glasses and traditional elements. Authentic appetizer presentation. 800x600, traditional pastry photography"
+
+## BACKGROUND & ATMOSPHERE IMAGES (1920x1080px)
+# Environmental and lifestyle images for website ambiance
+
+### Bakery Interior Showcase
+"Warm, inviting German bakery interior with traditional wooden display cases, photographed with 16-35mm wide-angle lens at f/8. Multiple cake displays with glass cases, vintage brass fixtures, and checkered floor tiles. Golden hour lighting streaming through large windows with sheer curtains. Traditional German bakery elements: copper molds, handwritten menu boards, fresh flowers. Customers browsing in soft focus background. Cozy, authentic atmosphere with warm color palette. 1920x1080, environmental photography"
+
+### Artisan Kitchen Action
+"Professional pastry chef decorating wedding cake in modern bakery kitchen, photographed with 85mm lens at f/2.8. Action shot capturing piping technique with shallow depth of field. Warm studio lighting with practical kitchen lights. Background shows blurred professional kitchen equipment and ingredients. Documentary-style photography emphasizing craftsmanship. Color palette: whites, stainless steel, warm skin tones. 1920x1080, behind-the-scenes photography"
+
+### Ingredients Artistry
+"Beautiful flat-lay arrangement of premium baking ingredients, photographed with 50mm lens at f/8 from directly overhead. Flour, eggs, butter, vanilla beans, chocolate, fresh berries arranged geometrically. Natural daylight from north-facing window with white reflector fill. Marble surface with subtle veining. Minimalist, clean styling with negative space. Color palette: natural ingredient colors against white marble. 1920x1080, ingredient photography"
+
+### Turkish Cultural Setting
+"Traditional Turkish tea house interior with ornate decorations, photographed with 24-70mm lens at f/5.6. Copper trays, traditional glasses, Turkish carpets, and ornate lanterns. Warm, golden lighting creating authentic Middle Eastern atmosphere. Background shows blurred traditional Turkish elements and patterns. Cultural authenticity with rich textures and colors. 1920x1080, cultural environment photography"
+
+## TECHNICAL SPECIFICATIONS FOR AI GENERATION:
+
+### FluxDev Advanced Settings:
+- Model: FLUX.1-dev (for highest quality) or FLUX.1-schnell (for faster generation)
+- Aspect Ratio: 16:9 for hero images (1920x1080), 4:3 for product images (800x600)
+- Guidance Scale: 7-12 (higher values for more prompt adherence)
+- Steps: 28-50 for optimal quality (28 minimum for professional results)
+- Sampler: DPM++ 2M Karras or Euler A for best food photography
+- CFG Scale: 7-9 for balanced creativity and prompt following
+- Seed: Use consistent seeds (e.g., 42, 123, 456) for style matching across batches
+
+### Imagen 3 Optimization:
+- Resolution: 1920x1080 for hero, 800x600 for products (always specify exact dimensions)
+- Aspect Ratio: Maintain exact ratios for web optimization
+- Style Descriptor: "Professional food photography, commercial quality"
+- Quality Setting: Premium/High (avoid draft mode for final images)
+- Safety Filter: Standard (appropriate for food content)
+- Negative Prompts: "blurry, low quality, amateur, oversaturated, artificial lighting"
+
+### Advanced Prompting Techniques:
+
+#### Structure Formula:
+[SUBJECT] + [CAMERA/LENS] + [LIGHTING] + [COMPOSITION] + [STYLE] + [BACKGROUND] + [COLOR PALETTE] + [TECHNICAL SPECS]
+
+#### Power Words for Food Photography:
+- Texture: "silky", "flaky", "crispy", "creamy", "velvety", "rustic"
+- Lighting: "golden hour", "soft diffused", "warm tungsten", "natural daylight"
+- Composition: "rule of thirds", "negative space", "leading lines", "depth of field"
+- Quality: "commercial grade", "magazine quality", "award-winning", "professional"
+
+#### Camera Settings Translation:
+- f/2.8 = "shallow depth of field, subject isolation"
+- f/5.6 = "balanced focus, some background detail"
+- f/8 = "sharp throughout, maximum detail"
+- 85mm = "portrait lens compression, natural perspective"
+- 100mm macro = "extreme detail, texture emphasis"
+
+## ENHANCED GENERATION GUIDELINES:
+
+### Prompt Optimization:
+1. **Lead with Impact**: Start with the most important visual element
+2. **Be Specific**: Use exact measurements, colors, and technical terms
+3. **Layer Details**: Build from general to specific (cake → frosting → decoration)
+4. **Include Negatives**: Specify what to avoid for cleaner results
+5. **Cultural Context**: Add authentic cultural elements for Turkish/German items
+
+### Quality Assurance Checklist:
+- ✓ Sharp focus on main subject
+- ✓ Appropriate depth of field
+- ✓ Consistent lighting temperature
+- ✓ Cultural authenticity
+- ✓ Professional food styling
+- ✓ Brand-appropriate colors
+- ✓ Clean, uncluttered composition
+
+### Batch Generation Strategy:
+
+#### Phase 1 - Hero Images (Critical):
+Generate all 6 hero carousel images first with consistent style parameters
+
+#### Phase 2 - Signature Items (High Priority):
+- German classics: Schwarzwälder Kirschtorte, Sachertorte, Käsekuchen
+- Turkish favorites: Baklava, Künefe, Lokum
+
+#### Phase 3 - Product Range (Medium Priority):
+- Chocolate specialties and cream cakes
+- Wedding and celebration cakes
+- Healthy alternatives
+
+#### Phase 4 - Supporting Content (Low Priority):
+- Savory items and breakfast options
+- Background and atmosphere images
+- Seasonal specialties
+
+### Color Psychology & Brand Alignment:
+- **Warm Browns** (#8B4513, #A0522D): Trust, comfort, traditional craftsmanship
+- **Cream Whites** (#FFF8DC, #FFFACD): Purity, elegance, premium quality
+- **Golden Yellows** (#FFD700, #F4A460): Luxury, warmth, appetite appeal
+- **Deep Reds** (#8B0000): Passion, indulgence, celebration
+- **Rich Greens** (#228B22): Freshness, natural ingredients, health
+
+### Style Consistency Framework:
+- **Lighting Temperature**: Consistent 3200K-4000K (warm, inviting)
+- **Depth of Field**: f/2.8-f/5.6 for products, f/8 for detailed shots
+- **Composition**: Rule of thirds, leading lines, negative space
+- **Background Treatment**: Soft blur, complementary colors, cultural elements
+- **Food Styling**: Professional standards, authentic presentations
+
+### Advanced Negative Prompts:
+"blurry, low resolution, amateur photography, oversaturated colors, artificial lighting, plastic appearance, unappetizing, messy presentation, incorrect cultural elements, modern minimalism (for traditional items), cold lighting, harsh shadows, cluttered background, watermarks, text overlays"
+
+### Regional Authenticity Guidelines:
+- **German Items**: Traditional presentation, rustic elements, forest/countryside themes
+- **Turkish Items**: Ornate patterns, copper serving pieces, Middle Eastern ambiance
+- **Modern Items**: Clean lines, contemporary plating, minimalist backgrounds
+
+### Final Quality Control:
+Before finalizing any image, verify:
+1. Cultural accuracy and authenticity
+2. Professional food styling standards
+3. Consistent brand color palette
+4. Appropriate lighting and mood
+5. Technical quality (sharpness, exposure, composition)
+6. Web optimization (correct dimensions and file size)
+
+## BATCH GENERATION RECOMMENDATIONS:
+
+### Priority 1 (Essential):
+- Main hero image
+- Chocolate torte
+- Black Forest cake
+- Wedding cake
+- Cheesecake
+
+### Priority 2 (Featured):
+- Fruit cake
+- Buttercream cake
+- Apple strudel
+- Baklava
+- Naked cake
+
+### Priority 3 (Gallery):
+- All remaining Turkish specialties
+- Savory items
+- Alternative/healthy options
+- Background/atmosphere images
+
+## COLOR PALETTE GUIDANCE:
+- Warm tones: Golden, cream, brown, amber
+- Accent colors: Pink, purple (brand colors)
+- Background: Clean whites, soft pastels
+- Food colors: Natural, appetizing, vibrant but realistic
+
+## STYLE CONSISTENCY:
+- Professional food photography style throughout
+- Consistent lighting (warm, inviting)
+- Clean, uncluttered compositions
+- Focus on texture and detail
+- Appetizing and luxurious presentation

@@ -87,15 +87,14 @@ const Footer = () => {
               <div className="flex items-start space-x-2">
                 <MapPin className="h-3 w-3 text-primary mt-0.5 flex-shrink-0" />
                 <div className="text-xs text-gray-600 font-light">
-                  <p>Musterstraße 123</p>
-                  <p>12345 Musterstadt</p>
+                  <p>Frankfurt am Main</p>
                 </div>
               </div>
               
               <div className="flex items-center space-x-2">
                 <Phone className="h-3 w-3 text-primary flex-shrink-0" />
-                <a href="tel:+49123456789" className="text-xs text-gray-600 hover:text-primary transition-colors font-light">
-                  +49 (0) 123 456 789
+                <a href="tel:+4969123456789" className="text-xs text-gray-600 hover:text-primary transition-colors font-light">
+                  +49 (0) 69 123 456 789
                 </a>
               </div>
               

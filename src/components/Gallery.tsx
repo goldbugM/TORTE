@@ -8,9 +8,15 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Eye, Heart, ShoppingCart, Star } from "lucide-react";
 import chocolateTorte from "@/assets/chocolate-torte.jpg";
+import buttercremeTorte from "@/assets/Buttercreme Torte.jpg";
+import nakedTorte from "@/assets/Naked Torte.jpg";
+import mascarponeTorte from "@/assets/Mascarpone-Frischkäse-Sahne Torte.jpg";
+import vintageTorte from "@/assets/Vintage Torte.jpg";
+import schokoTorte from "@/assets/Schoko Torte.jpg";
 import fruitCake from "@/assets/fruit-cake.jpg";
 import weddingCake from "@/assets/wedding-cake.jpg";
 import blackForestCake from "@/assets/black-forest-cake.jpg";
+import pannaCottaTorte from "@/assets/panna cotta torte.png";
 import apfelstrudel from "@/assets/apfelstrudel.jpg";
 import kasekuchen from "@/assets/kasekuchen.jpg";
 import baklava from "@/assets/baklava.jpg";
@@ -73,107 +79,69 @@ const Gallery = () => {
       image: chocolateTorte,
       title: "Schokoladen Torte",
       description: "Saftige Schokoladentorte mit cremiger Füllung und dunklen Beeren",
-      price: "ab 35€",
       rating: 4.9,
       popular: true,
       ingredients: ["Dunkle Schokolade", "Frische Beeren", "Sahne", "Biskuit"],
       allergens: ["Gluten", "Milch", "Eier"]
     },
     {
-      image: "/placeholder-cake.svg",
+      image: buttercremeTorte,
       title: "Buttercreme Torte",
       description: "Klassische Torte mit luftiger Buttercreme und zartem Biskuitboden",
-      price: "ab 32€",
       rating: 4.8,
       popular: true,
       ingredients: ["Butter", "Puderzucker", "Biskuit", "Vanille"],
       allergens: ["Gluten", "Milch", "Eier"]
     },
     {
-      image: "/placeholder-cake.svg",
+      image: nakedTorte,
       title: "Naked Torte",
       description: "Moderne Torte ohne Fondant mit sichtbaren Schichten und frischen Früchten",
-      price: "ab 38€",
       rating: 4.9,
       popular: true,
       ingredients: ["Frische Früchte", "Sahne", "Biskuit", "Beeren"],
       allergens: ["Gluten", "Milch", "Eier"]
     },
     {
-      image: "/placeholder-cake.svg",
+      image: mascarponeTorte,
       title: "Mascarpone-Frischkäse-Sahne Torte",
       description: "Cremige Torte mit Mascarpone, Frischkäse und luftiger Sahne",
-      price: "ab 36€",
       rating: 4.8,
       popular: false,
       ingredients: ["Mascarpone", "Frischkäse", "Sahne", "Biskuit"],
       allergens: ["Gluten", "Milch", "Eier"]
     },
     {
-      image: "/placeholder-cake.svg",
+      image: vintageTorte,
       title: "Vintage Torte",
       description: "Elegante Torte im Vintage-Stil mit klassischen Dekorationen",
-      price: "ab 45€",
       rating: 4.9,
       popular: false,
       ingredients: ["Buttercreme", "Fondant", "Biskuit", "Dekoration"],
       allergens: ["Gluten", "Milch", "Eier"]
     },
     {
-      image: "/placeholder-cake.svg",
+      image: schokoTorte,
       title: "Schoko Torte",
       description: "Intensive Schokoladentorte für echte Schokoladenliebhaber",
-      price: "ab 34€",
       rating: 4.8,
       popular: true,
       ingredients: ["Schokolade", "Kakao", "Sahne", "Biskuit"],
       allergens: ["Gluten", "Milch", "Eier", "Soja"]
     },
     {
-      image: "/placeholder-cake.svg",
-      title: "Zitronen Tiramisu",
-      description: "Erfrischende Variation des klassischen Tiramisu mit Zitrone",
-      price: "ab 30€",
-      rating: 4.7,
-      popular: false,
-      ingredients: ["Mascarpone", "Löffelbiskuit", "Zitrone", "Kaffee"],
-      allergens: ["Gluten", "Milch", "Eier"]
-    },
-    {
-      image: "/placeholder-cake.svg",
-      title: "Wassermelonen Torte",
-      description: "Gesunde Torte komplett aus frischen Früchten ohne Backen",
-      price: "ab 28€",
-      rating: 4.6,
-      popular: false,
-      ingredients: ["Wassermelone", "Beeren", "Kokosnuss", "Nüsse"],
-      allergens: ["Nüsse"]
-    },
-    {
-      image: "/placeholder-cake.svg",
-      title: "Cake Pops und Muffins",
-      description: "Kleine süße Leckereien perfekt für Partys und Events",
-      price: "ab 2€/Stück",
+      image: pannaCottaTorte,
+      title: "Panna Cotta Torte",
+      description: "Cremige italienische Panna Cotta auf zartem Biskuitboden mit frischen Beeren",
       rating: 4.7,
       popular: true,
-      ingredients: ["Biskuit", "Schokolade", "Dekoration", "Sahne"],
+      ingredients: ["Sahne", "Gelatine", "Vanille", "Biskuit", "Beeren"],
       allergens: ["Gluten", "Milch", "Eier"]
-    },
-    {
-      image: "/placeholder-cake.svg",
-      title: "San Sebastian Cheesecake",
-      description: "Baskischer Käsekuchen mit karamellisierter Oberfläche",
-      price: "ab 32€",
-      rating: 4.9,
-      popular: true,
-      ingredients: ["Frischkäse", "Sahne", "Eier", "Zucker"],
-      allergens: ["Milch", "Eier"]
     },
     {
       image: fruitCake,
       title: "Fruchtige Sahnetorte",
       description: "Frische Beeren auf luftiger Sahne mit Biskuitboden",
-      price: "ab 32€",
       rating: 4.8,
       popular: false,
       ingredients: ["Frische Beeren", "Schlagsahne", "Biskuit", "Vanille"],
@@ -183,7 +151,6 @@ const Gallery = () => {
       image: weddingCake,
       title: "Hochzeitstorte",
       description: "Elegante mehrstöckige Torte für Ihren besonderen Tag",
-      price: "ab 150€",
       rating: 5.0,
       popular: true,
       ingredients: ["Premium Zutaten", "Fondant", "Buttercreme", "Dekoration"],
@@ -193,7 +160,6 @@ const Gallery = () => {
       image: blackForestCake,
       title: "Schwarzwälder Kirschtorte",
       description: "Klassische deutsche Torte mit Kirschen, Sahne und Schokolade",
-      price: "ab 38€",
       rating: 4.9,
       popular: true,
       ingredients: ["Sauerkirschen", "Schlagsahne", "Schokolade", "Kirschwasser"],
@@ -203,7 +169,6 @@ const Gallery = () => {
       image: apfelstrudel,
       title: "Apfelstrudel",
       description: "Traditioneller Strudel mit Äpfeln, Zimt und Vanillesauce",
-      price: "ab 18€",
       rating: 4.7,
       popular: false,
       ingredients: ["Äpfel", "Zimt", "Strudelteig", "Vanillesauce"],
@@ -213,7 +178,6 @@ const Gallery = () => {
       image: kasekuchen,
       title: "Käsekuchen",
       description: "Cremiger deutscher Käsekuchen mit frischen Beeren",
-      price: "ab 28€",
       rating: 4.8,
       popular: false,
       ingredients: ["Quark", "Frischkäse", "Beeren", "Mürbeteig"],
@@ -226,7 +190,6 @@ const Gallery = () => {
       image: baklava,
       title: "Baklava",
       description: "Traditionelles Blätterteiggebäck mit Pistazien und Honigsirup",
-      price: "ab 25€/kg",
       rating: 4.9,
       popular: true,
       ingredients: ["Pistazien", "Blätterteig", "Honig", "Butter"],
@@ -236,7 +199,6 @@ const Gallery = () => {
       image: "/placeholder-sweet.svg",
       title: "Lofas Cheeckie",
       description: "Süße türkische Spezialität mit cremiger Füllung",
-      price: "ab 20€/kg",
       rating: 4.7,
       popular: false,
       ingredients: ["Milch", "Zucker", "Stärke", "Vanille"],
@@ -246,7 +208,6 @@ const Gallery = () => {
       image: "/placeholder-sweet.svg",
       title: "Kalte Baklava",
       description: "Erfrischende Baklava-Variation mit Milchsirup und Pistazien/Walnuss",
-      price: "ab 28€/kg",
       rating: 4.8,
       popular: true,
       ingredients: ["Pistazien", "Walnüsse", "Milchsirup", "Blätterteig"],
@@ -256,7 +217,6 @@ const Gallery = () => {
       image: "/placeholder-sweet.svg",
       title: "Sütlü Nuriye & Baklava",
       description: "Baklava mit Mascarpone/Pistazienfüllung und Milchsirup",
-      price: "ab 30€/kg",
       rating: 4.9,
       popular: true,
       ingredients: ["Mascarpone", "Pistazien", "Milchsirup", "Blätterteig"],
@@ -266,7 +226,6 @@ const Gallery = () => {
       image: "/placeholder-sweet.svg",
       title: "Kalburabasti mit Kokosnuss",
       description: "Traditionelles türkisches Dessert mit Kokosnuss und Sirup",
-      price: "ab 22€/kg",
       rating: 4.6,
       popular: false,
       ingredients: ["Kokosnuss", "Grieß", "Sirup", "Mandeln"],
@@ -276,7 +235,6 @@ const Gallery = () => {
       image: "/placeholder-sweet.svg",
       title: "Şekerpare",
       description: "Süße Grießküchlein getränkt in Zuckersirup",
-      price: "ab 18€/kg",
       rating: 4.7,
       popular: false,
       ingredients: ["Grieß", "Zucker", "Mandeln", "Sirup"],
@@ -286,7 +244,6 @@ const Gallery = () => {
       image: kunefe,
       title: "Künefe",
       description: "Warmes Dessert mit geschmolzenem Käse und Kadayıf-Teig",
-      price: "ab 8€/Portion",
       rating: 4.8,
       popular: true,
       ingredients: ["Kadayıf-Teig", "Käse", "Sirup", "Pistazien"],
@@ -296,7 +253,6 @@ const Gallery = () => {
       image: lokum,
       title: "Lokum (Turkish Delight)",
       description: "Weiche Süßigkeit mit Rosenwasser, Zitrone oder Pistazien",
-      price: "ab 15€/kg",
       rating: 4.7,
       popular: false,
       ingredients: ["Zucker", "Stärke", "Rosenwasser", "Pistazien"],
@@ -306,7 +262,6 @@ const Gallery = () => {
       image: sutlac,
       title: "Sütlaç",
       description: "Cremiger türkischer Reispudding mit Zimt",
-      price: "ab 6€/Portion",
       rating: 4.6,
       popular: false,
       ingredients: ["Reis", "Milch", "Zucker", "Zimt"],
@@ -316,7 +271,6 @@ const Gallery = () => {
       image: muhallebi,
       title: "Muhallebi",
       description: "Traditioneller Milchpudding mit Pistazien und Rosenwasser",
-      price: "ab 7€/Portion",
       rating: 4.7,
       popular: false,
       ingredients: ["Milch", "Stärke", "Pistazien", "Rosenwasser"],
@@ -326,7 +280,6 @@ const Gallery = () => {
       image: revani,
       title: "Revani",
       description: "Saftiger Grießkuchen getränkt in duftendem Sirup",
-      price: "ab 22€",
       rating: 4.8,
       popular: false,
       ingredients: ["Grieß", "Sirup", "Mandeln", "Zitrone"],
@@ -339,7 +292,6 @@ const Gallery = () => {
       image: borek,
       title: "Börek",
       description: "Knuspriges Blätterteiggebäck mit verschiedenen Füllungen (Käse, Kartoffel, Hackfleisch, Spinat)",
-      price: "ab 20€",
       rating: 4.8,
       popular: true,
       ingredients: ["Blätterteig", "Käse/Kartoffel/Hackfleisch/Spinat", "Zwiebeln"],
@@ -349,7 +301,6 @@ const Gallery = () => {
       image: "/placeholder-savory.svg",
       title: "Karotten Tarator",
       description: "Erfrischender Salat mit Karotten, Joghurt und Knoblauch",
-      price: "ab 12€/Portion",
       rating: 4.6,
       popular: false,
       ingredients: ["Karotten", "Joghurt", "Knoblauch", "Olivenöl"],
@@ -359,7 +310,6 @@ const Gallery = () => {
       image: "/placeholder-savory.svg",
       title: "Gefüllte Zwiebeln (Soğan Dolması)",
       description: "Traditionell gefüllte Zwiebeln mit Reis und Gewürzen",
-      price: "ab 15€/Portion",
       rating: 4.7,
       popular: false,
       ingredients: ["Zwiebeln", "Reis", "Hackfleisch", "Gewürze"],
@@ -369,7 +319,6 @@ const Gallery = () => {
       image: "/placeholder-savory.svg",
       title: "Çiğ Köfte",
       description: "Würzige vegetarische Bulgur-Bällchen mit Kräutern",
-      price: "ab 18€/Portion",
       rating: 4.8,
       popular: true,
       ingredients: ["Bulgur", "Tomatenmark", "Gewürze", "Kräuter"],
@@ -379,7 +328,6 @@ const Gallery = () => {
       image: "/placeholder-savory.svg",
       title: "Kısır (Couscous Salat)",
       description: "Türkischer Bulgursalat mit frischen Kräutern und Gemüse",
-      price: "ab 14€/Portion",
       rating: 4.7,
       popular: true,
       ingredients: ["Bulgur", "Petersilie", "Tomaten", "Zwiebeln"],
@@ -389,7 +337,6 @@ const Gallery = () => {
       image: "/placeholder-savory.svg",
       title: "Nudelsalat",
       description: "Cremiger Nudelsalat nach türkischer Art",
-      price: "ab 12€/Portion",
       rating: 4.5,
       popular: false,
       ingredients: ["Nudeln", "Mayonnaise", "Gemüse", "Gewürze"],
@@ -399,7 +346,6 @@ const Gallery = () => {
       image: "/placeholder-savory.svg",
       title: "Weinblätter (Sarma)",
       description: "Mit Reis gefüllte Weinblätter in Olivenöl",
-      price: "ab 16€/Portion",
       rating: 4.8,
       popular: true,
       ingredients: ["Weinblätter", "Reis", "Zwiebeln", "Olivenöl"],
@@ -409,7 +355,6 @@ const Gallery = () => {
       image: "/placeholder-savory.svg",
       title: "Beilagen jeder Art",
       description: "Verschiedene türkische Beilagen und Salate nach Wunsch",
-      price: "ab 8€/Portion",
       rating: 4.6,
       popular: false,
       ingredients: ["Variiert je nach Beilage"],
@@ -419,7 +364,6 @@ const Gallery = () => {
       image: pide,
       title: "Pide",
       description: "Türkisches Fladenbrot-Boot mit Käse, Ei und Gemüse",
-      price: "ab 12€/Stück",
       rating: 4.7,
       popular: true,
       ingredients: ["Hefeteig", "Käse", "Ei", "Gemüse"],
@@ -429,7 +373,6 @@ const Gallery = () => {
       image: lahmacun,
       title: "Lahmacun",
       description: "Dünnes Fladenbrot mit gewürztem Hackfleisch",
-      price: "ab 8€/Stück",
       rating: 4.6,
       popular: false,
       ingredients: ["Hefeteig", "Hackfleisch", "Tomaten", "Gewürze"],
@@ -439,7 +382,6 @@ const Gallery = () => {
       image: manti,
       title: "Mantı",
       description: "Kleine türkische Teigtaschen mit Joghurt und Paprikabutter",
-      price: "ab 15€/Portion",
       rating: 4.9,
       popular: true,
       ingredients: ["Nudelteig", "Hackfleisch", "Joghurt", "Paprikabutter"],
@@ -449,7 +391,6 @@ const Gallery = () => {
       image: sigaraBoregi,
       title: "Sigara Böreği",
       description: "Knusprige zigarrenförmige Börek-Rollen mit Käse",
-      price: "ab 18€/10 Stück",
       rating: 4.7,
       popular: false,
       ingredients: ["Yufka-Teig", "Käse", "Petersilie", "Öl"],
@@ -517,8 +458,6 @@ const Gallery = () => {
                             <span className="text-sm text-muted-foreground">({item.rating})</span>
                           </div>
                           
-                          <div className="text-2xl font-bold text-primary">{item.price}</div>
-                          
                           <div>
                             <h4 className="font-semibold mb-2">Zutaten:</h4>
                             <div className="flex flex-wrap gap-1">
@@ -572,11 +511,7 @@ const Gallery = () => {
                   )}
                 </div>
                 
-                <div className="absolute top-2 right-2">
-                  <div className="bg-black/70 text-white px-2 py-1 rounded text-sm font-semibold">
-                    {item.price}
-                  </div>
-                </div>
+
               </div>
               
               <CardContent className="p-6">
@@ -592,21 +527,18 @@ const Gallery = () => {
                   {item.description}
                 </p>
                 
-                <div className="flex items-center justify-between">
-                  <div className="text-lg font-bold text-primary">
-                    {item.price}
-                  </div>
+                <div className="flex items-center justify-center">
                   <div className="flex gap-2">
-                    <Button 
-                      size="sm" 
+                    <Button
+                      size="sm"
                       variant="outline"
                       onClick={navigateToConfigurator}
                       className="hover:scale-105 transition-transform duration-200"
                     >
                       Konfigurieren
                     </Button>
-                    <Button 
-                      size="sm" 
+                    <Button
+                      size="sm"
                       onClick={scrollToContact}
                       className="hover:scale-105 transition-transform duration-200"
                     >

@@ -40,7 +40,6 @@ const availableCakes = [
   {
     id: 'schokoladen-torte',
     name: 'Schokoladen Torte',
-    basePrice: 35,
     description: 'Saftige Schokoladentorte mit cremiger Füllung und dunklen Beeren',
     category: 'chocolate',
     defaultFilling: ['chocolate-cream'],
@@ -49,7 +48,6 @@ const availableCakes = [
   {
     id: 'buttercreme-torte',
     name: 'Buttercreme Torte',
-    basePrice: 32,
     description: 'Klassische Torte mit luftiger Buttercreme und zartem Biskuitboden',
     category: 'classic',
     defaultFilling: ['vanilla-cream'],
@@ -58,7 +56,6 @@ const availableCakes = [
   {
     id: 'naked-torte',
     name: 'Naked Torte',
-    basePrice: 38,
     description: 'Moderne Torte ohne Fondant mit sichtbaren Schichten und frischen Früchten',
     category: 'modern',
     defaultFilling: ['fresh-fruits'],
@@ -67,7 +64,6 @@ const availableCakes = [
   {
     id: 'mascarpone-torte',
     name: 'Mascarpone-Frischkäse-Sahne Torte',
-    basePrice: 36,
     description: 'Cremige Torte mit Mascarpone, Frischkäse und luftiger Sahne',
     category: 'cream',
     defaultFilling: ['mascarpone-cream'],
@@ -76,7 +72,6 @@ const availableCakes = [
   {
     id: 'vintage-torte',
     name: 'Vintage Torte',
-    basePrice: 45,
     description: 'Elegante Torte im Vintage-Stil mit klassischen Dekorationen',
     category: 'elegant',
     defaultFilling: ['vanilla-cream'],
@@ -85,7 +80,6 @@ const availableCakes = [
   {
     id: 'schoko-torte',
     name: 'Schoko Torte',
-    basePrice: 34,
     description: 'Intensive Schokoladentorte für echte Schokoladenliebhaber',
     category: 'chocolate',
     defaultFilling: ['chocolate-cream'],
@@ -94,7 +88,6 @@ const availableCakes = [
   {
     id: 'zitronen-tiramisu',
     name: 'Zitronen Tiramisu',
-    basePrice: 30,
     description: 'Erfrischende Variation des klassischen Tiramisu mit Zitrone',
     category: 'fresh',
     defaultFilling: ['lemon-mascarpone'],
@@ -103,7 +96,6 @@ const availableCakes = [
   {
     id: 'wassermelonen-torte',
     name: 'Wassermelonen Torte',
-    basePrice: 28,
     description: 'Gesunde Torte komplett aus frischen Früchten ohne Backen',
     category: 'healthy',
     defaultFilling: ['fresh-fruits'],
@@ -112,7 +104,6 @@ const availableCakes = [
   {
     id: 'san-sebastian-cheesecake',
     name: 'San Sebastian Cheesecake',
-    basePrice: 32,
     description: 'Baskischer Käsekuchen mit karamellisierter Oberfläche',
     category: 'cheesecake',
     defaultFilling: ['cream-cheese'],
@@ -121,7 +112,6 @@ const availableCakes = [
   {
     id: 'fruchtige-sahnetorte',
     name: 'Fruchtige Sahnetorte',
-    basePrice: 32,
     description: 'Frische Beeren auf luftiger Sahne mit Biskuitboden',
     category: 'fruity',
     defaultFilling: ['fresh-fruits'],
@@ -130,7 +120,6 @@ const availableCakes = [
   {
     id: 'hochzeitstorte',
     name: 'Hochzeitstorte',
-    basePrice: 150,
     description: 'Elegante mehrstöckige Torte für Ihren besonderen Tag',
     category: 'wedding',
     defaultFilling: ['vanilla-cream'],
@@ -139,7 +128,6 @@ const availableCakes = [
   {
     id: 'schwarzwalder-kirschtorte',
     name: 'Schwarzwälder Kirschtorte',
-    basePrice: 38,
     description: 'Klassische deutsche Torte mit Kirschen, Sahne und Schokolade',
     category: 'traditional',
     defaultFilling: ['cherry-cream'],
@@ -148,7 +136,6 @@ const availableCakes = [
   {
     id: 'apfelstrudel',
     name: 'Apfelstrudel',
-    basePrice: 18,
     description: 'Traditioneller Strudel mit Äpfeln, Zimt und Vanillesauce',
     category: 'traditional',
     defaultFilling: ['apple-cinnamon'],
@@ -157,11 +144,42 @@ const availableCakes = [
   {
     id: 'kasekuchen',
     name: 'Käsekuchen',
-    basePrice: 28,
     description: 'Cremiger deutscher Käsekuchen mit frischen Beeren',
     category: 'cheesecake',
     defaultFilling: ['cream-cheese'],
     defaultFrosting: 'none'
+  },
+  {
+    id: 'panna-cotta-torte',
+    name: 'Panna Cotta Torte',
+    description: 'Cremige italienische Panna Cotta auf zartem Biskuitboden mit frischen Beeren',
+    category: 'cream',
+    defaultFilling: ['vanilla-cream'],
+    defaultFrosting: 'none'
+  },
+  {
+    id: 'lotus-biscoff-cheesecake',
+    name: 'Lotus Biscoff Cheesecake',
+    description: 'Karamell-Käsekuchen mit Biscoff-Keksen und Streuseln',
+    category: 'cheesecake',
+    defaultFilling: ['caramel-cream'],
+    defaultFrosting: 'none'
+  },
+  {
+    id: 'einhorn-regenbogen-torte',
+    name: 'Einhorn-Regenbogen-Torte',
+    description: 'Bunte Kindertorte mit Einhorn, Regenbogen und Wolken',
+    category: 'kids',
+    defaultFilling: ['vanilla-cream'],
+    defaultFrosting: 'fondant'
+  },
+  {
+    id: 'schmetterlings-sahnetorte',
+    name: 'Schmetterlings-Sahnetorte',
+    description: 'Gelbe Buttercreme-Torte mit Schmetterlingen und rosa Blüten',
+    category: 'elegant',
+    defaultFilling: ['vanilla-cream'],
+    defaultFrosting: 'buttercream'
   }
 ];
 
@@ -213,8 +231,7 @@ const TortenConfigurator = () => {
     customerAddress: '',
     specialRequests: '',
     glutenFree: false,
-    lactoseFree: false,
-    price: 0
+    lactoseFree: false
   });
 
   const [currentStep, setCurrentStep] = useState(0);
@@ -236,50 +253,11 @@ const TortenConfigurator = () => {
 
   useEffect(() => {
     setIsVisible(true);
-    calculatePrice();
   }, [config]);
 
-  const calculatePrice = () => {
-    const selectedCakeData = availableCakes.find(cake => cake.id === config.selectedCake);
-    let basePrice = selectedCakeData ? selectedCakeData.basePrice : 0;
-    
-    // Size pricing
-    const sizePricing = {
-      'small': 25,
-      'medium': 45,
-      'large': 65,
-      'xl': 85,
-      'custom': 100
-    };
-    
-    basePrice += sizePricing[config.size as keyof typeof sizePricing] || 0;
-    
-    // Layer pricing
-    basePrice += (config.layers - 1) * 15;
-    
-    // Filling pricing
-    basePrice += config.filling.length * 8;
-    
-    // Decoration pricing
-    basePrice += config.decoration.length * 12;
-    
-    // Premium frosting
-    if (['buttercream-premium', 'fondant', 'ganache'].includes(config.frosting)) {
-      basePrice += 20;
-    }
-    
-    // Special dietary requirements
-    const glutenFreePrice = config.glutenFree ? 5 : 0;
-    const lactoseFreePrice = config.lactoseFree ? 3 : 0;
-    
-    return Math.round(basePrice + glutenFreePrice + lactoseFreePrice);
-  };
 
-  // Update price whenever config changes
-  useEffect(() => {
-    const newPrice = calculatePrice();
-    setConfig(prev => ({ ...prev, price: newPrice }));
-  }, [config.selectedCake, config.size, config.layers, config.filling, config.frosting, config.decoration, config.glutenFree, config.lactoseFree]);
+
+
 
   const steps = [
     { id: 0, title: 'Torte wählen', icon: Cake },
@@ -291,11 +269,11 @@ const TortenConfigurator = () => {
   ];
 
   const sizeOptions = [
-    { id: 'small', name: 'Klein (15cm)', servings: '6-8 Personen', price: '+25€' },
-    { id: 'medium', name: 'Mittel (20cm)', servings: '10-12 Personen', price: '+45€' },
-    { id: 'large', name: 'Groß (25cm)', servings: '15-18 Personen', price: '+65€' },
-    { id: 'xl', name: 'Extra Groß (30cm)', servings: '20-25 Personen', price: '+85€' },
-    { id: 'custom', name: 'Individuell', servings: 'Nach Wunsch', price: 'Auf Anfrage' }
+    { id: 'small', name: 'Klein (15cm)', servings: '6-8 Personen' },
+    { id: 'medium', name: 'Mittel (20cm)', servings: '10-12 Personen' },
+    { id: 'large', name: 'Groß (25cm)', servings: '15-18 Personen' },
+    { id: 'xl', name: 'Extra Groß (30cm)', servings: '20-25 Personen' },
+    { id: 'custom', name: 'Individuell', servings: 'Nach Wunsch' }
   ];
 
   const baseTypes = [
@@ -320,22 +298,22 @@ const TortenConfigurator = () => {
 
   const frostingOptions = [
     { id: 'buttercream', name: 'Buttercreme', description: 'Klassisch cremig' },
-    { id: 'buttercream-premium', name: 'Premium Buttercreme', description: 'Extra cremig (+20€)' },
+    { id: 'buttercream-premium', name: 'Premium Buttercreme', description: 'Extra cremig' },
     { id: 'cream-cheese', name: 'Frischkäse Frosting', description: 'Leicht säuerlich' },
-    { id: 'fondant', name: 'Fondant', description: 'Glatt und elegant (+20€)' },
-    { id: 'ganache', name: 'Ganache', description: 'Schokoladig glänzend (+20€)' },
+    { id: 'fondant', name: 'Fondant', description: 'Glatt und elegant' },
+    { id: 'ganache', name: 'Ganache', description: 'Schokoladig glänzend' },
     { id: 'naked', name: 'Naked Style', description: 'Minimalistisch' }
   ];
 
   const decorationOptions = [
-    { id: 'fresh-flowers', name: 'Frische Blumen', price: '+15€' },
-    { id: 'sugar-flowers', name: 'Zucker Blumen', price: '+25€' },
-    { id: 'macarons', name: 'Macarons', price: '+20€' },
-    { id: 'berries', name: 'Frische Beeren', price: '+12€' },
-    { id: 'chocolate-drip', name: 'Schokoladen Drip', price: '+18€' },
-    { id: 'gold-leaf', name: 'Blattgold', price: '+30€' },
-    { id: 'pearls', name: 'Zucker Perlen', price: '+10€' },
-    { id: 'sprinkles', name: 'Streusel', price: '+5€' }
+    { id: 'fresh-flowers', name: 'Frische Blumen' },
+    { id: 'sugar-flowers', name: 'Zucker Blumen' },
+    { id: 'macarons', name: 'Macarons' },
+    { id: 'berries', name: 'Frische Beeren' },
+    { id: 'chocolate-drip', name: 'Schokoladen Drip' },
+    { id: 'gold-leaf', name: 'Blattgold' },
+    { id: 'pearls', name: 'Zucker Perlen' },
+    { id: 'sprinkles', name: 'Streusel' }
   ];
 
   const colorOptions = [
@@ -370,10 +348,7 @@ const TortenConfigurator = () => {
                     <SelectContent>
                       {availableCakes.map((cake) => (
                         <SelectItem key={cake.id} value={cake.id}>
-                          <div className="flex justify-between items-center w-full">
-                            <span>{cake.name}</span>
-                            <span className="text-pink-600 font-semibold ml-2">ab {cake.basePrice}€</span>
-                          </div>
+                          <span>{cake.name}</span>
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -383,9 +358,8 @@ const TortenConfigurator = () => {
                       <CardContent className="p-3">
                         <h4 className="font-semibold">{availableCakes.find(c => c.id === config.selectedCake)?.name}</h4>
                         <p className="text-sm text-muted-foreground">{availableCakes.find(c => c.id === config.selectedCake)?.description}</p>
-                        <div className="flex justify-between items-center mt-2">
+                        <div className="flex justify-center items-center mt-2">
                           <Badge variant="outline">{availableCakes.find(c => c.id === config.selectedCake)?.category}</Badge>
-                          <span className="font-bold text-pink-600">ab {availableCakes.find(c => c.id === config.selectedCake)?.basePrice}€</span>
                         </div>
                       </CardContent>
                     </Card>
@@ -404,9 +378,8 @@ const TortenConfigurator = () => {
                       <CardContent className="p-4">
                         <h4 className="font-semibold">{cake.name}</h4>
                         <p className="text-sm text-muted-foreground mb-2">{cake.description}</p>
-                        <div className="flex justify-between items-center">
+                        <div className="flex justify-center items-center">
                           <Badge variant="outline">{cake.category}</Badge>
-                          <span className="font-bold text-pink-600">ab {cake.basePrice}€</span>
                         </div>
                       </CardContent>
                     </Card>
@@ -436,7 +409,7 @@ const TortenConfigurator = () => {
                               <span className="font-medium">{size.name}</span>
                               <span className="text-sm text-muted-foreground ml-2">({size.servings})</span>
                             </div>
-                            <span className="text-pink-600 font-semibold ml-2">{size.price}</span>
+
                           </div>
                         </SelectItem>
                       ))}
@@ -447,7 +420,7 @@ const TortenConfigurator = () => {
                       <CardContent className="p-3 text-center">
                         <h4 className="font-semibold">{sizeOptions.find(s => s.id === config.size)?.name}</h4>
                         <p className="text-sm text-muted-foreground">{sizeOptions.find(s => s.id === config.size)?.servings}</p>
-                        <Badge variant="secondary" className="mt-2">{sizeOptions.find(s => s.id === config.size)?.price}</Badge>
+
                       </CardContent>
                     </Card>
                   )}
@@ -465,7 +438,6 @@ const TortenConfigurator = () => {
                       <CardContent className="p-4 text-center">
                         <h4 className="font-semibold">{size.name}</h4>
                         <p className="text-sm text-muted-foreground">{size.servings}</p>
-                        <Badge variant="secondary" className="mt-2">{size.price}</Badge>
                       </CardContent>
                     </Card>
                   ))}
@@ -491,9 +463,7 @@ const TortenConfigurator = () => {
                 >
                   <Plus className="h-4 w-4" />
                 </Button>
-                <span className="text-sm text-muted-foreground">
-                  (+{(config.layers - 1) * 15}€ für zusätzliche Schichten)
-                </span>
+
               </div>
             </div>
 
@@ -581,7 +551,7 @@ const TortenConfigurator = () => {
                                 ))}
                               </div>
                             </div>
-                            <span className="text-sm font-semibold text-pink-600">+8€</span>
+
                           </div>
                         </label>
                       </div>
@@ -596,7 +566,7 @@ const TortenConfigurator = () => {
                             const filling = fillingOptions.find(f => f.id === fillingId);
                             return filling ? (
                               <div key={fillingId} className="text-sm">
-                                {filling.name} (+8€)
+                                {filling.name}
                               </div>
                             ) : null;
                           })}
@@ -634,7 +604,7 @@ const TortenConfigurator = () => {
                               ))}
                             </div>
                           </div>
-                          <Badge variant="secondary">+8€</Badge>
+
                         </div>
                       </CardContent>
                     </Card>
@@ -784,10 +754,7 @@ const TortenConfigurator = () => {
                           htmlFor={`decoration-${decoration.id}`}
                           className="flex-1 cursor-pointer"
                         >
-                          <div className="flex justify-between items-center">
-                            <span className="font-medium">{decoration.name}</span>
-                            <span className="text-sm font-semibold text-pink-600">{decoration.price}</span>
-                          </div>
+                          <span className="font-medium">{decoration.name}</span>
                         </label>
                       </div>
                     ))}
@@ -801,7 +768,7 @@ const TortenConfigurator = () => {
                             const decoration = decorationOptions.find(d => d.id === decorationId);
                             return decoration ? (
                               <div key={decorationId} className="text-sm">
-                                {decoration.name} ({decoration.price})
+                                {decoration.name}
                               </div>
                             ) : null;
                           })}
@@ -829,7 +796,6 @@ const TortenConfigurator = () => {
                     >
                       <CardContent className="p-4 text-center">
                         <h4 className="font-semibold">{decoration.name}</h4>
-                        <Badge variant="secondary" className="mt-2">{decoration.price}</Badge>
                       </CardContent>
                     </Card>
                   ))}
@@ -862,7 +828,7 @@ const TortenConfigurator = () => {
                             <span className="font-medium">Glutenfrei</span>
                             <p className="text-sm text-muted-foreground">Torte ohne Gluten</p>
                           </div>
-                          <span className="text-sm font-semibold text-pink-600">+5€</span>
+
                         </div>
                       </label>
                     </div>
@@ -886,7 +852,7 @@ const TortenConfigurator = () => {
                             <span className="font-medium">Laktosefrei</span>
                             <p className="text-sm text-muted-foreground">Torte ohne Laktose</p>
                           </div>
-                          <span className="text-sm font-semibold text-pink-600">+3€</span>
+
                         </div>
                       </label>
                     </div>
@@ -908,10 +874,10 @@ const TortenConfigurator = () => {
                     <CardContent className="p-4 text-center">
                       <h4 className="font-semibold">Glutenfrei</h4>
                       <p className="text-sm text-muted-foreground mt-2">
-                        Torte ohne Gluten (+5€)
+                        Torte ohne Gluten
                       </p>
                       <Badge variant={config.glutenFree ? "default" : "secondary"} className="mt-2">
-                        {config.glutenFree ? "Ausgewählt" : "+5€"}
+                        {config.glutenFree ? "Ausgewählt" : "Verfügbar"}
                       </Badge>
                     </CardContent>
                   </Card>
@@ -930,10 +896,10 @@ const TortenConfigurator = () => {
                     <CardContent className="p-4 text-center">
                       <h4 className="font-semibold">Laktosefrei</h4>
                       <p className="text-sm text-muted-foreground mt-2">
-                        Torte ohne Laktose (+3€)
+                        Torte ohne Laktose
                       </p>
                       <Badge variant={config.lactoseFree ? "default" : "secondary"} className="mt-2">
-                        {config.lactoseFree ? "Ausgewählt" : "+3€"}
+                        {config.lactoseFree ? "Ausgewählt" : "Verfügbar"}
                       </Badge>
                     </CardContent>
                   </Card>
@@ -982,7 +948,7 @@ const TortenConfigurator = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="delivery" id="delivery" />
-                  <Label htmlFor="delivery">Lieferung (+15€)</Label>
+                  <Label htmlFor="delivery">Lieferung</Label>
                 </div>
               </RadioGroup>
             </div>
@@ -1067,8 +1033,8 @@ const TortenConfigurator = () => {
                     <p>Dekorationen: {config.decoration.map(d => decorationOptions.find(deco => deco.id === d)?.name).join(', ') || 'Keine'}</p>
                     {(config.glutenFree || config.lactoseFree) && (
                       <p>Besondere Anforderungen: {[
-                        config.glutenFree ? 'Glutenfrei (+5€)' : '',
-                        config.lactoseFree ? 'Laktosefrei (+3€)' : ''
+                        config.glutenFree ? 'Glutenfrei' : '',
+                        config.lactoseFree ? 'Laktosefrei' : ''
                       ].filter(Boolean).join(', ')}</p>
                     )}
                   </div>
@@ -1087,11 +1053,8 @@ const TortenConfigurator = () => {
                 <Separator />
                 
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-pink-600 mb-2">
-                    {config.price}€ {config.delivery === 'delivery' ? '+ 15€ Lieferung' : ''}
-                  </div>
                   <p className="text-sm text-muted-foreground">
-                    Alle Preise sind Richtwerte. Der finale Preis wird bei der Bestellung bestätigt.
+                    Der finale Preis wird bei der Bestellung bestätigt.
                   </p>
                 </div>
                 
@@ -1126,7 +1089,7 @@ const TortenConfigurator = () => {
                       <Input
                         id="customerPhone"
                         type="tel"
-                        placeholder="+49 123 456789"
+                        placeholder="+49 69 123 456789"
                         value={config.customerPhone}
                         onChange={(e) => setConfig(prev => ({ ...prev, customerPhone: e.target.value }))}
                         required
@@ -1162,7 +1125,7 @@ const TortenConfigurator = () => {
     
 Ihre Torte: ${availableCakes.find(cake => cake.id === config.selectedCake)?.name}
 Lieferung: ${config.deliveryDate} um ${config.deliveryTime}
-Gesamtpreis: ${config.price}€${config.delivery === 'delivery' ? ' + 15€ Lieferung' : ''}
+Lieferart: ${config.delivery === 'delivery' ? 'Lieferung' : 'Abholung'}
 
 Wir werden uns in Kürze bei Ihnen melden, um die Details zu besprechen.`);
   };
@@ -1286,14 +1249,7 @@ Wir werden uns in Kürze bei Ihnen melden, um die Details zu besprechen.`);
               )}
             </div>
 
-            <div className={`${isMobile ? 'text-center' : 'text-right'}`}>
-              <div className={`font-bold text-pink-600 ${isMobile ? 'text-xl' : 'text-2xl'}`}>
-                {config.price}€
-              </div>
-              <p className="text-sm text-muted-foreground">
-                {config.delivery === 'delivery' && '+ 15€ Lieferung'}
-              </p>
-            </div>
+
           </div>
         </div>
       </div>
