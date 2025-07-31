@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
-import GlareHover from "@/components/ui/GlareHover";
 import { useState, useEffect } from "react";
-import { ChefHat, Heart, Star, ArrowDown, Eye, Instagram } from "lucide-react";
+import { ChefHat, Eye, Instagram } from "lucide-react";
 import carousel1 from "@/assets/carousel and cards/1.jpg";
 import carousel2 from "@/assets/carousel and cards/2.jpg";
 import carousel3 from "@/assets/carousel and cards/3.jpg";
@@ -82,12 +81,8 @@ const Hero = () => {
         <div className="absolute top-20 left-10 animate-bounce delay-1000">
           <ChefHat className="h-8 w-8 text-primary/30" />
         </div>
-        <div className="absolute top-40 right-20 animate-pulse delay-2000">
-          <Heart className="h-6 w-6 text-rose-400/40" />
-        </div>
-        <div className="absolute bottom-40 left-20 animate-bounce delay-3000">
-          <Star className="h-7 w-7 text-yellow-400/40" />
-        </div>
+
+
       </div>
       
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
@@ -120,25 +115,8 @@ const Hero = () => {
           <div className={`flex flex-col sm:flex-row gap-6 transform transition-all duration-1000 delay-700 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}>
-            <GlareHover
-              glareColor="#ff69b4"
-              glareOpacity={0.4}
-              glareSize={120}
-              transitionDuration={800}
-              className="inline-block flex-1"
-            >
-              <Button 
-                variant="hero" 
-                size="lg" 
-                className="shadow-elegant hover:shadow-rose hover:scale-105 transition-all duration-300 group w-full bg-primary hover:bg-primary/90 text-white font-medium rounded-full px-10 py-6 text-lg h-16"
-                onClick={() => scrollToSection('featured')}
-              >
-                <span className="mr-3">Unsere Bestseller ansehen</span>
-                <ChefHat className="h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
-              </Button>
-            </GlareHover>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               size="lg"
               className="shadow-elegant hover:shadow-rose hover:scale-105 transition-all duration-300 group flex-1 w-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-medium rounded-full px-10 py-6 text-lg h-16"
               onClick={() => scrollToSection('gallery')}
@@ -177,15 +155,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <button 
-          onClick={() => scrollToSection('featured')}
-          className="p-3 rounded-full bg-white/80 border border-gray-200/50 hover:bg-white hover:scale-110 transition-all duration-300 shadow-soft"
-        >
-          <ArrowDown className="h-5 w-5 text-gray-700" />
-        </button>
-      </div>
+
     </section>
   );
 };

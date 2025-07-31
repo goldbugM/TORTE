@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { Menu, X, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import logoTorte from "@/assets/logo_torte.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -53,10 +54,17 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <h1 className="text-xl md:text-2xl font-display font-semibold text-primary cursor-pointer hover:scale-105 transition-transform duration-200"
-                onClick={() => scrollToSection('home')}>
-              Tortenwelt R&Z
-            </h1>
+            <div className="flex items-center space-x-3 cursor-pointer hover:scale-105 transition-transform duration-200"
+                 onClick={() => scrollToSection('home')}>
+              <img
+                src={logoTorte}
+                alt="Tortenwelt R&Z Logo"
+                className="h-10 w-10 md:h-12 md:w-12 object-contain"
+              />
+              <h1 className="text-xl md:text-2xl font-display font-semibold text-primary">
+                Tortenwelt R&Z
+              </h1>
+            </div>
           </div>
           
           {/* Desktop Navigation */}

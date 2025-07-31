@@ -164,7 +164,7 @@
   /* Carousel zoom animations */
   @keyframes zoomOut {
     0% {
-      transform: scale(1.15);
+      transform: scale(1.01);
       opacity: 0;
     }
     100% {
@@ -179,7 +179,7 @@
       opacity: 1;
     }
     100% {
-      transform: scale(1.15);
+      transform: scale(1.01);
       opacity: 0;
     }
   }
@@ -189,20 +189,20 @@
       transform: scale(1);
     }
     100% {
-      transform: scale(1.1);
+      transform: scale(1.01);
     }
   }
 
   .carousel-enter {
-    animation: zoomOut 1000ms ease-out forwards, kenBurns 8000ms ease-in-out infinite alternate;
+    animation: zoomOut 15000ms ease-out forwards, kenBurns 180000ms ease-in-out infinite alternate;
   }
 
   .carousel-exit {
-    animation: zoomIn 1000ms ease-out forwards;
+    animation: zoomIn 15000ms ease-out forwards;
   }
 
   .carousel-active {
-    animation: kenBurns 8000ms ease-in-out infinite alternate;
+    animation: kenBurns 180000ms ease-in-out infinite alternate;
   }
 }
 
